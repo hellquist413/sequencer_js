@@ -9,7 +9,7 @@ let swingSubDiv = '32n';
 let bpm = 133;
 let songsData = [];
 let lastId = "";
-let currentKitName = "SubtiltQuist";
+let currentKitName = "KrumQuist";
 
 // ----------------------------------// 
 // User preset settings
@@ -58,7 +58,7 @@ stepsData = [
   [0, 1, 0, 0,    0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0],
   [0, 0, 0, 1,    0, 1, 0, 1,   0, 0, 0, 0,   0, 0, 0, 0],
   [1, 0, 0, 0,    1, 0, 0, 0,   1, 0, 0, 0,   1, 0, 0, 0],
-  [1, 0, 1, 1,    1, 1, 1, 0,   0, 1, 0, 1,   0, 1, 1, 0] 
+  [1, 0, 1, 1,    1, 1, 1, 0,   0, 1, 0, 1,   0, 0, 1, 0] 
 ];
 
 

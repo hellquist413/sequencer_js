@@ -6,7 +6,6 @@ function selectKit(id) {
     }
 
     switch (id) {
-        default:
         case "1":
             kitName = "SubtiltQuist";
             sampleUrl = 'samples/SubtiltQuist/';
@@ -100,59 +99,11 @@ function selectKit(id) {
                 vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9);
 
             break;
+        default:
         case "3":
             kitName = "KrumQuist";
             sampleUrl = 'samples/krum/';
             kit_id = "3";
-
-            sample1 = "133_hat.wav";
-            note1 = "C2";
-            letvol1 = -2;
-
-            sample2 = "133_clap.wav";
-            note2 = "C2";
-            vol2 = 0;
-
-            sample3 = "133_perc.wav";
-            note3 = "C2";
-            vol3 = 2;
-
-            sample4 = "133_perc2.wav";
-            note4 = "C2";
-            vol4 = 3;
-
-            sample5 = "133_stab.wav";
-            note5 = "C2";
-            vol5 = 2;
-
-            sample6 = "133_bass.wav";
-            note6 = "C2";
-            vol6 = 5;
-
-            sample7 = "133_slurpeh_form.wav";
-            note7 = "A3";
-            vol7 = -10;
-
-            sample8 = "133_kick.wav";
-            note8 = "C2";
-            vol8 = 0;
-
-            note9 = "C2";
-            vol9 = -10;
-
-            createKit(kit_id, kitName,
-                sampleUrl, sample1, sample2, sample3, sample4,
-                sample5, sample6, sample7, sample8,
-                note1, note2, note3, note4, note5, note6, note7, note8, note9,
-                vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9);
-
-            break;
-        case "1":
-            kitName = "KrumQuist";
-            sampleUrl = 'samples/krum/';
-            kit_id = "1";
-            bpm = "133";
-            bpmInput.value = bpm;
 
             sample1 = "133_hat.wav";
             note1 = "C2";
