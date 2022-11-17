@@ -283,6 +283,7 @@ function activateSteps() {
 
   if (stepsData[rowId][stepId] === 0) {
     newValue = 1;
+    triggerMix(rowId);
   } else {
     newValue = 0;
   }
