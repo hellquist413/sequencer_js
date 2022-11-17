@@ -122,8 +122,8 @@ function selectKit(id) {
             vol4 = 3;
 
             sample5 = "133_stab.wav";
-            note5 = "C2";
-            vol5 = 2;
+            note5 = "D2";
+            vol5 = -1;
 
             sample6 = "133_bass.wav";
             note6 = "C2";
