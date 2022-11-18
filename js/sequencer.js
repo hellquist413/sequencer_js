@@ -50,15 +50,15 @@ let synthKnob7 = 0;
 let synthKnob8 = 1;
 
 stepsData = [
-  [0, 0, 1, 0,    0, 0, 1, 0,   0, 0, 1, 0,   0, 0, 1, 0,   0, 0, 1, 0,    0, 0, 1, 0,   0, 0, 1, 0,   0, 0, 1, 0],
-  [0, 0, 0, 0,    1, 0, 0, 0,   0, 0, 0, 0,   1, 0, 0, 0,   0, 0, 0, 0,    1, 0, 0, 0,   0, 0, 0, 0,   1, 0, 0, 0],
-  [0, 0, 0, 0,    0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0,    0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0],
-  [0, 0, 0, 0,    0, 0, 0, 1,   0, 0, 1, 0,   0, 0, 0, 0,   0, 0, 0, 0,    0, 0, 0, 1,   0, 0, 1, 0,   0, 0, 0, 0],
-  [0, 0, 0, 0,    0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0,    0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 1, 0],
-  [0, 1, 0, 0,    0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0,   0, 1, 0, 0,    0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0],
-  [0, 0, 0, 1,    0, 1, 0, 1,   0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 1,    0, 1, 0, 1,   0, 0, 0, 0,   0, 0, 0, 0],
-  [1, 0, 0, 0,    1, 0, 0, 0,   1, 0, 0, 0,   1, 0, 0, 0,   1, 0, 0, 0,    1, 0, 0, 0,   1, 0, 0, 0,   1, 0, 0, 1],
-  [1, 0, 1, 1,    1, 1, 1, 0,   0, 1, 0, 1,   0, 0, 1, 0,   1, 0, 1, 1,    1, 1, 1, 0,   0, 1, 0, 1,   0, 0, 1, 0] 
+  [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+  [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0]
 ];
 
 
@@ -100,7 +100,7 @@ let notes = [];
 // ----------------------------------------------// 
 
 function createSynths() {
-  
+
   selectKit(uPreKit);
 
   return synths
@@ -119,9 +119,9 @@ function createStepsArray() {
 
 function resetStepsArray() {
 
-  if(uPreId != "") { 
+  if (uPreId != "") {
     let rowDiv = document.getElementById('pId_' + uPreId);
-    rowDiv.classList.remove('cellActive'); 
+    rowDiv.classList.remove('cellActive');
   }
 
   uPreLoaded = false;
@@ -208,7 +208,7 @@ function createTable(rows, steps) {
     newTableSpace.classList.add('tableSpace');
     newTableSpace.setAttribute('id', 'mix' + i);
     newTableSpace.innerHTML = (
-      '<img src="img/inst/mix.svg" height="40" id="inst" onclick="triggerMix('
+      '<img src="img/inst/mix.svg" height="30px" id="inst" onclick="triggerMix('
       + instrumentId +
       ')" class="mixElementFilter">'
     );
@@ -331,7 +331,7 @@ function swingSub(value) {
 // ----------------------------------------------// 
 // ----------------------------------------------// 
 
-function activeKit (value) {
+function activeKit(value) {
   const grabCurrentKitDOM = document.getElementById('displayKit');
   const grabSelectedKitClick = document.getElementById("kit" + value);
   grabSelectedKitClick.classList.add('green');
@@ -342,7 +342,7 @@ function activeKit (value) {
   }
 
   grabCurrentKitDOM.innerHTML = ('Kit: ' + currentKitName);
-  
+
 }
 
 // ----------------------------------------------// 
@@ -610,14 +610,14 @@ const mouseUp = () => {
 
 function loadPresetList() {
 
-let requestTrack = new Request('/sequencer/get-presets');
+  let requestTrack = new Request('/sequencer/get-presets');
 
   fetch(requestTrack)
     .then(function (response) {
       return response.json();
     })
     .then(function (songsData) {
-      
+
       // Create Rows
       let i = 1;
       songsData.forEach(songsData => {
@@ -630,8 +630,8 @@ let requestTrack = new Request('/sequencer/get-presets');
         let presetRow = document.createElement('div');
         presetRow.classList.add('user-presets-content');
         presetRow.setAttribute('id', 'pId_' + songsData._id);
- 
-        if(i % 2 === 0) { presetRow.classList.add('lightgray'); }
+
+        if (i % 2 === 0) { presetRow.classList.add('lightgray'); }
         i++;
 
         // Create cells
@@ -661,7 +661,7 @@ let requestTrack = new Request('/sequencer/get-presets');
 
         lastId = songsData._id;
       });
-    })    .then(function () {
+    }).then(function () {
 
       const presetRows = document.querySelectorAll('.user-presets-content');
       for (let i = 0; i < presetRows.length; i++) {
@@ -694,13 +694,13 @@ function listenToSong() {
   let idN
   let requestTrackId
 
-  if(lastId == "" && !initialized) {
+  if (lastId == "" && !initialized) {
     requestTrackId = new Request('/sequencer/id/' + getUserPresetFromUrl);
     id = 'pId_' + getUserPresetFromUrl;
     idN = getUserPresetFromUrl;
     rowDiv = document.getElementById(id);
   } else {
-    id = this.id; 
+    id = this.id;
     getId = this.id.split("_");
     idN = getId[1];
     requestTrackId = new Request('/sequencer/id/' + idN);
@@ -734,14 +734,14 @@ function listenToSong() {
       bpm = parseInt(songsData.bpm);
       previousKit = uPreKit;
 
-      
+
       Tone.Draw.cancel();
       swingSub(swingSubDiv);
       createTable(rows, steps);
       selectKit(uPreKit);
 
       swingValueDef = songsData.swing;
-      swingSubDiv = songsData.swingsub;      
+      swingSubDiv = songsData.swingsub;
 
       bpmInput.value = bpm;
       let swingValue = document.getElementById("swingSlider").value = swingValueDef;
@@ -754,7 +754,7 @@ function listenToSong() {
 
       const getAllKitsList = document.querySelectorAll('.kitc');
 
-      for(let j = 0; j < getAllKitsList.length; j++) {
+      for (let j = 0; j < getAllKitsList.length; j++) {
         getAllKitsList[j].classList.remove('green');
       }
 
@@ -778,12 +778,12 @@ function listenToSong() {
       updateKnob8(songsData.lfofreq);
     });
 
-    rowDiv = document.getElementById(id);
-    if(rowDiv) { rowDiv.classList.add('cellActive'); }
-    addgreenPlay();
+  rowDiv = document.getElementById(id);
+  if (rowDiv) { rowDiv.classList.add('cellActive'); }
+  addgreenPlay();
 }
 
-function addgreenPlay () {
+function addgreenPlay() {
   const button = document.getElementById('playBtn');
   if (initialized && !isPlaying) {
     button.innerHTML = 'Stop';
@@ -792,7 +792,7 @@ function addgreenPlay () {
 }
 
 function sanitizeString(str) {
-  str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+  str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "");
   return str.trim();
 }
 
@@ -805,7 +805,7 @@ submitForm.addEventListener('submit', (event) => {
 
   // Check all inputs and so track is not empty
   if (formAuthor !== "" && formDescription !== "") {
-    
+
     submitData(sanitizeString(formAuthor), sanitizeString(formDescription));
 
   } else if (!formAuthor) {
@@ -825,10 +825,10 @@ async function submitData(formAuthor, formDescription) {
   lastId = 0;
   let id = lastId + 1;
   let kit = uPreKit;
-  
-  const data = { 
+
+  const data = {
     id,
-    formAuthor, 
+    formAuthor,
     formDescription,
     newRating,
     kit,
@@ -863,7 +863,7 @@ async function submitData(formAuthor, formDescription) {
   let presetContainer = document.getElementById('up');
   presetContainer.innerHTML = '';
   loadPresetList();
-  
+
   return json;
 }
 

@@ -6,7 +6,7 @@ knobVol.addEventListener("input", (event) => {
     // console.log(synth3.volume.value);
 });
 
-function updateKnobVol (value) {
+function updateKnobVol(value) {
     knobVol.value = value;
     synth3.volume.value = value;
 }
@@ -20,7 +20,7 @@ knob1.addEventListener("input", (event) => {
 });
 
 
-function updateKnob1 (value) {
+function updateKnob1(value) {
     knob1.value = value;
     synth3.detune.value = value;
 }
@@ -33,7 +33,7 @@ knob2.addEventListener("input", (event) => {
     synth3.filterEnvelope.baseFrequency = synthKnob2;
 });
 
-function updateKnob2 (value) {
+function updateKnob2(value) {
     knob2.value = value;
     synth3.filterEnvelope.baseFrequency = value;
 }
@@ -45,10 +45,10 @@ knob3.addEventListener("input", (event) => {
     synthKnob3 = event.target.value;
     synth3.filterEnvelope.sustain = synthKnob3 * 0.01;
     synth3.filterEnvelope.decay = synthKnob3 * 0.01;
-    synth3.filterEnvelope.release = synthKnob3 * 0.1 ;
+    synth3.filterEnvelope.release = synthKnob3 * 0.1;
 });
 
-function updateKnob3 (value) {
+function updateKnob3(value) {
     knob3.value = value;
     value *= 0.01;
     synth3.filterEnvelope.sustain = value;
@@ -65,7 +65,7 @@ knob4.addEventListener("input", (event) => {
     synth3.envelope.decay = synthKnob4 * 0.01;
 });
 
-function updateKnob4 (value) {
+function updateKnob4(value) {
     knob4.value = value;
     value *= 0.01;
     synth3.envelope.sustain = value;
@@ -80,7 +80,7 @@ knob5.addEventListener("input", (event) => {
     pingPong.wet.value = synthKnob5 * 0.01;
 });
 
-function updateKnob5 (value) {
+function updateKnob5(value) {
     knob5.value = value;
     value *= 0.01;
     pingPong.wet.value = value;
@@ -94,7 +94,7 @@ knob6.addEventListener("input", (event) => {
     reverb.wet.value = synthKnob6 * 0.01;
 });
 
-function updateKnob6 (value) {
+function updateKnob6(value) {
     knob6.value = value;
     value *= 0.01;
     pingPong.wet.value = value;
@@ -108,7 +108,7 @@ knob7.addEventListener("input", (event) => {
     filter.wet.value = synthKnob7 * 0.01;
 });
 
-function updateKnob7 (value) {
+function updateKnob7(value) {
     knob7.value = value;
     value *= 0.01;
     filter.wet.value = value;
@@ -121,7 +121,7 @@ knob8.addEventListener("input", (event) => {
     filter.frequency.value = synthKnob8;
 });
 
-function updateKnob8 (value) {
+function updateKnob8(value) {
     knob8.value = value;
     filter.frequency.value = value;
 }
