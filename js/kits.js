@@ -107,7 +107,7 @@ function selectKit(id) {
 
             sample1 = "133_hat.wav";
             note1 = "C2";
-            letvol1 = -2;
+            vol1 = -2;
 
             sample2 = "133_clap.wav";
             note2 = "C2";
@@ -259,6 +259,19 @@ createKit = function (kit_id, kitName,
         initialize();
         isPlaying = true;
     }
+
+    if (userPresetIsLoaded === true) {
+        updateVolumeSlider(0, vol1);
+        updateVolumeSlider(1, vol2);
+        updateVolumeSlider(2, vol3);
+        updateVolumeSlider(3, vol4);
+        updateVolumeSlider(4, vol5);
+        updateVolumeSlider(5, vol6);
+        updateVolumeSlider(6, vol7);
+        updateVolumeSlider(7, vol8);
+        updateVolumeSlider(8, vol9);
+    }
+
 }
 
 function disposeKit() {

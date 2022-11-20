@@ -21,8 +21,9 @@ let uPreAuthor = "";
 let uPreDescription = "";
 let uPreKit;
 let sampleUrl = 'samples/';
+let userPresetIsLoaded = false;
 
-let activateHeader = document.querySelector('.presetBox');
+// let activateHeader = document.querySelector('.presetBox');
 let bpmInput = document.getElementById('bpmInput');
 bpmInput.value = bpm;
 let previousKit;
@@ -61,6 +62,7 @@ stepsData = [
   [1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0]
 ];
 
+let presetData = [];
 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
@@ -203,12 +205,11 @@ function createTable(rows, steps) {
     newTableSpace.classList.add('tableSpace');
     newTableSpace.setAttribute('id', 'mix' + i);
     newTableSpace.innerHTML = `
-      <input type="range" min="-20" max="10" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
+      <input type="range" min="-50" max="10" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
       <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter">
     `;
 
     seq.querySelector('#row_' + i).appendChild(newTableSpace);
-
 
 
     // Create horizontal steps
@@ -357,6 +358,7 @@ function startLoop() {
   updateKnob6(knob6.value);
   updateKnob7(knob7.value);
   updateKnob8(knob8.value);
+
 
   const repeat = (time) => {
 
@@ -858,13 +860,31 @@ async function vote(vote) {
   const json = await res.json();
 }
 
+
+// ----------------------------------------------// 
+// Handle copy preset link
+
+const copyButton = document.getElementById("urlCopyButton");
+const copyUrlText = document.getElementById("urlTextbox");
+
+copyButton.addEventListener('click', function () {
+  let generatedData = createUserPresetData();
+  let getUrl = window.location.host + '/?d=' + generatedData;
+  copyUrlText.value = getUrl;
+  navigator.clipboard.writeText(getUrl);
+  // console.log(getUrl + " copied!");
+});
+
+
 // ----------------------------------------------// 
 
 window.addEventListener('load', function () {
   createSynths();
   createTable(rows, steps);
   handlePlay();
-  // loadPresetList();
+  loadUserPresetData();
+  let getUrl = window.location.href;
+  copyUrlText.value = getUrl;
 });
 
 
