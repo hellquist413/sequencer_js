@@ -10,7 +10,7 @@
   --btnGreen: rgb(205, 31, 211);
   --brightBox: rgb(187, 175, 255);
   --minusActive: #3a0ca5;
-  --sliderColorBorder: rgb(121, 63, 255);
+  --sliderColorBorder: rgb(76, 0, 255);
   --sliderBg: rgb(246, 48, 130);
   --sliderBg2: #7033ff;
   --sliderBg3: rgb(246, 48, 130);
@@ -29,6 +29,7 @@
   --buttonTextDecoration: #462e6d;
   --buttonHover: #3a0ca5;
   --buttonHoverBorder: #462e6d;
+  --filter: invert(10%) sepia(20%) saturate(100%) hue-rotate(93deg) brightness(80%) contrast(150%);
 }
 
 * {
@@ -631,8 +632,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: 1px solid var(--sliderColorBorder);
   border-top-left-radius: 20px 20px;
   background-color: var(--tableheadbg);
-  min-width: 46px;
-
+  min-width: 120px;
 }
 
 #headSpan {
@@ -649,8 +649,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding-top: 9px;
   border: solid 1px var(--sliderColorBorder);
   border-top: 0px;
-  min-width: 46px;
-
+  min-width: 120px;
 }
 
 .activeStep {
@@ -673,14 +672,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #inst {
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   align-items: center;
   justify-content: center;
 }
 
 .mixElementFilter {
-  filter: invert(10%) sepia(20%) saturate(100%) hue-rotate(93deg) brightness(80%) contrast(150%);  
+  filter: var(--filter);
 }
 
 .forth {

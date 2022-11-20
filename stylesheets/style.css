@@ -29,6 +29,7 @@
   --buttonTextDecoration: #D1D5DB;
   --buttonHover: rgb(255, 186, 75);
   --buttonHoverBorder: rgb(64, 64, 64);
+  --filter: invert(28%) sepia(50%) saturate(147%) hue-rotate(6deg) brightness(118%) contrast(119%);
 }
 
 * {
@@ -631,8 +632,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: 1px solid var(--sliderColorBorder);
   border-top-left-radius: 20px 20px;
   background-color: var(--tableheadbg);
-  min-width: 46px;
-
+  min-width: 120px;
 }
 
 #headSpan {
@@ -649,8 +649,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding-top: 9px;
   border: solid 1px var(--sliderColorBorder);
   border-top: 0px;
-  min-width: 46px;
-
+  min-width: 120px;
 }
 
 .activeStep {
@@ -673,14 +672,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #inst {
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   align-items: center;
   justify-content: center;
 }
 
 .mixElementFilter {
-  filter: invert(28%) sepia(50%) saturate(147%) hue-rotate(6deg) brightness(118%) contrast(119%);
+  filter: var(--filter);
 }
 
 .forth {

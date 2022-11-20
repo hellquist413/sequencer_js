@@ -13,7 +13,7 @@ function selectKit(id) {
 
             sample1 = "openhat.wav";
             note1 = "C2";
-            letvol1 = -2;
+            vol1 = -2;
 
             sample2 = "hat_closed.wav";
             note2 = "C2";

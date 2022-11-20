@@ -67,7 +67,7 @@ stepsData = [
 // ----------------------------------------------// 
 // Create instruments & samples
 
-let mixer = new Tone.Gain({ value: 0, });
+let mixer = new Tone.Gain({ value: 0 });
 let reverb = new Tone.Reverb({
   wet: 0.3,
   decay: 8,
@@ -131,17 +131,12 @@ function resetStepsArray() {
   uPreDescription = "";
   swingValueDef = 8;
   swingSubDiv = "32n";
-  rows = 9;
-  steps = 16;
 
-
-  activateHeader.classList.remove('presetBox-active');
+  // activateHeader.classList.remove('presetBox-active');
   stepsData = [];
   createStepsArray();
   createTable(rows, steps);
 }
-
-
 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
@@ -207,13 +202,13 @@ function createTable(rows, steps) {
     let newTableSpace = document.createElement('div');
     newTableSpace.classList.add('tableSpace');
     newTableSpace.setAttribute('id', 'mix' + i);
-    newTableSpace.innerHTML = (
-      '<img src="img/inst/mix.svg" height="30px" id="inst" onclick="triggerMix('
-      + instrumentId +
-      ')" class="mixElementFilter">'
-    );
+    newTableSpace.innerHTML = `
+      <input type="range" min="-20" max="10" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
+      <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter">
+    `;
 
     seq.querySelector('#row_' + i).appendChild(newTableSpace);
+
 
 
     // Create horizontal steps
@@ -677,15 +672,6 @@ function loadPresetList() {
 // ----------------------------------------------// 
 // LISTEN TO SONG
 
-
-
-
-
-
-
-
-
-
 function listenToSong() {
 
   let id;
@@ -827,25 +813,9 @@ async function submitData(formAuthor, formDescription) {
   let kit = uPreKit;
 
   const data = {
-    id,
-    formAuthor,
-    formDescription,
-    newRating,
-    kit,
-    bpm,
-    steps,
-    swingValueDef,
-    swingSubDiv,
-    stepsData,
-    synthKnobVol,
-    synthKnob1,
-    synthKnob2,
-    synthKnob3,
-    synthKnob4,
-    synthKnob5,
-    synthKnob6,
-    synthKnob7,
-    synthKnob8
+    id, formAuthor, formDescription, newRating, kit, bpm, steps,
+    swingValueDef, swingSubDiv, stepsData,
+    synthKnobVol, synthKnob1, synthKnob2, synthKnob3, synthKnob4, synthKnob5, synthKnob6, synthKnob7, synthKnob8
   }
 
   const options = {
