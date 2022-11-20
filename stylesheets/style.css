@@ -1,6 +1,9 @@
 :root {
   --textColor: black;
   --bgdiv1: #dddddd;
+  --gradient1: rgba(231, 231, 231, 1);
+  --gradient2: rgba(255, 255, 255, 1);
+  --gradient3: rgba(234, 234, 234, 1);
   --btnbg: #cccccc;
   --btnborder: #adadad;
   --btnActive: green;
@@ -26,6 +29,7 @@
   --buttonTextDecoration: #D1D5DB;
   --buttonHover: rgb(255, 186, 75);
   --buttonHoverBorder: rgb(64, 64, 64);
+  --filter: invert(28%) sepia(50%) saturate(147%) hue-rotate(6deg) brightness(118%) contrast(119%);
 }
 
 * {
@@ -35,7 +39,7 @@
 body {
   min-height: 100vh;
   background: rgb(231, 231, 231);
-  background: linear-gradient(0deg, rgba(231, 231, 231, 1) 0%, rgba(255, 255, 255, 1) 26%, rgba(234, 234, 234, 1) 91%, rgba(161, 161, 161, 1) 100%);
+  background: linear-gradient(0deg, var(--gradient1) 0%, var(--gradient2) 26%, var(--gradient3) 91%, rgba(161, 161, 161, 1) 100%);
   color: white;
   font-size: 1.5rem;
   font-family: 'PT Sans Narrow', sans-serif;
@@ -371,17 +375,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .slider {
-  width: 70%;
+  width: 60%;
   outline: none;
   opacity: 0.5;
   -webkit-transition: .1s;
   transition: opacity .1s;
-  border: 1px solid var(--sliderColorBorder);
-  border-radius: 5%;
-  position: absolute;
-  top: 2px;
+  top: 3px;
   height: 26px;
-  right: 2px;
+  position: relative;
 }
 
 /* Chrome */
@@ -450,14 +451,13 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 10px;
 } */
 .dropdown {
-  position: relative;
+  position:inherit;
   display: inline-block;
   margin: 0px;
   width: 164px;
-  height: 35px;
   text-align: left;
-  top: 0px;
-  margin-bottom: 10px;
+  height: 38px;
+  top: 4px;
 }
 
 .dropdown-content {
@@ -632,8 +632,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: 1px solid var(--sliderColorBorder);
   border-top-left-radius: 20px 20px;
   background-color: var(--tableheadbg);
-  min-width: 46px;
-
+  min-width: 120px;
 }
 
 #headSpan {
@@ -650,8 +649,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding-top: 9px;
   border: solid 1px var(--sliderColorBorder);
   border-top: 0px;
-  min-width: 46px;
-
+  min-width: 120px;
 }
 
 .activeStep {
@@ -674,14 +672,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #inst {
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   align-items: center;
   justify-content: center;
 }
 
 .mixElementFilter {
-  filter: invert(28%) sepia(50%) saturate(147%) hue-rotate(6deg) brightness(118%) contrast(119%);
+  filter: var(--filter);
 }
 
 .forth {
@@ -936,4 +934,16 @@ input[type=number]::-webkit-outer-spin-button {
   z-index: 100;
   left: 10px;
   top: 10px;
+}
+
+.button-slider {
+  background-color: var(--buttonBackground);
+  border: 1px solid var(--btnborder);
+  border-radius: .5rem;
+  color: var(--textColor);
+  text-align: center;
+  text-decoration: none var(---buttonTextDecoration) solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
 }
