@@ -13,38 +13,41 @@ function selectKit(id) {
 
             sample1 = "openhat.wav";
             note1 = "C2";
-            vol1 = -2;
 
             sample2 = "hat_closed.wav";
             note2 = "C2";
-            vol2 = -5;
 
             sample3 = "snare.wav";
             note3 = "C2";
-            vol3 = 5;
 
             sample4 = "fx1.wav";
-            note4 = "C2";
-            vol4 = -4;
 
             sample5 = "fx.wav";
             note5 = "C2";
-            vol5 = -4;
+            note4 = "C2";
 
             sample6 = "percfx.wav";
             note6 = "C2";
-            vol6 = -2;
 
             sample7 = "minibs.wav";
             note7 = "A3";
-            vol7 = -5;
 
             sample8 = "KICK.wav";
             note8 = "C2";
-            vol8 = 0;
 
             note9 = "C2";
-            vol9 = -10;
+
+            if (userPresetIsLoaded === false && initialized === false) {
+                vol1 = -2;
+                vol2 = -5;
+                vol3 = 5;
+                vol4 = -4;
+                vol5 = -4;
+                vol6 = -2;
+                vol7 = -5;
+                vol8 = 0;
+                vol9 = -10;
+            }
 
             createKit(kit_id, kitName,
                 sampleUrl, sample1, sample2, sample3, sample4,
@@ -59,38 +62,41 @@ function selectKit(id) {
 
             sample1 = "ssm_MA_hihats_driver2_136.mp3";
             note1 = "C2";
-            vol1 = -10;
 
             sample2 = "ssm_MA_snare2_136.mp3";
             note2 = "C2";
-            vol2 = -3;
 
             sample3 = "ssm_MA_shake_rim_136.wav";
             note3 = "C2";
-            vol3 = -7;
 
             sample4 = "ssm_MA_perc_136.mp3";
             note4 = "C2";
-            vol4 = -4;
 
             sample5 = "ssm_MA_fx_stab_136.wav";
             note5 = "C2";
-            vol5 = -9;
 
             sample6 = "ssm_MA_bassyFill_136.wav";
             note6 = "C2";
-            vol6 = 2;
 
             sample7 = "ssm_MA_bassy_perc_136.wav";
             note7 = "D2";
-            vol7 = 0;
 
             sample8 = "ssm_MA_KICK_136.mp3";
             note8 = "C2";
-            vol8 = 2;
 
             note9 = "C2";
-            vol9 = -10;
+
+            if (userPresetIsLoaded === false && initialized === false) {
+                vol1 = -10;
+                vol2 = -3;
+                vol3 = -7;
+                vol4 = -4;
+                vol5 = -9;
+                vol6 = 2;
+                vol7 = 0;
+                vol8 = 2;
+                vol9 = -10;
+            }
 
             createKit(kit_id, kitName,
                 sampleUrl, sample1, sample2, sample3, sample4,
@@ -107,38 +113,41 @@ function selectKit(id) {
 
             sample1 = "133_hat.wav";
             note1 = "C2";
-            vol1 = -2;
 
             sample2 = "133_clap.wav";
             note2 = "C2";
-            vol2 = 0;
 
             sample3 = "133_perc.wav";
             note3 = "C2";
-            vol3 = 2;
 
             sample4 = "133_perc2.wav";
             note4 = "C2";
-            vol4 = 3;
 
             sample5 = "133_stab.wav";
             note5 = "D2";
-            vol5 = -1;
 
             sample6 = "133_bass.wav";
             note6 = "C2";
-            vol6 = 5;
 
             sample7 = "133_slurpeh_form.wav";
             note7 = "A3";
-            vol7 = -10;
 
             sample8 = "133_kick.wav";
             note8 = "C2";
-            vol8 = 0;
 
             note9 = "C2";
-            vol9 = -10;
+
+            if (userPresetIsLoaded === false && initialized === false) {
+                vol1 = -2;
+                vol2 = 0;
+                vol3 = 2;
+                vol4 = 3;
+                vol5 = -1;
+                vol6 = 5;
+                vol7 = -10;
+                vol8 = 0;
+                vol9 = -10;
+            }
 
             createKit(kit_id, kitName,
                 sampleUrl, sample1, sample2, sample3, sample4,
@@ -259,19 +268,6 @@ createKit = function (kit_id, kitName,
         initialize();
         isPlaying = true;
     }
-
-    if (userPresetIsLoaded === true) {
-        updateVolumeSlider(0, vol1);
-        updateVolumeSlider(1, vol2);
-        updateVolumeSlider(2, vol3);
-        updateVolumeSlider(3, vol4);
-        updateVolumeSlider(4, vol5);
-        updateVolumeSlider(5, vol6);
-        updateVolumeSlider(6, vol7);
-        updateVolumeSlider(7, vol8);
-        updateVolumeSlider(8, vol9);
-    }
-
 }
 
 function disposeKit() {

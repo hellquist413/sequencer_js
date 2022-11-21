@@ -112,7 +112,7 @@ function createSynths() {
 
 function createStepsArray() {
   for (let i = 0; i < rows; i++) {
-    const arrayRows = new Array(16).fill(0);
+    const arrayRows = new Array(32).fill(0);
     stepsData.push(arrayRows);
   }
 }
@@ -133,6 +133,21 @@ function resetStepsArray() {
   uPreDescription = "";
   swingValueDef = 8;
   swingSubDiv = "32n";
+
+  vol1 = 0;
+  vol2 = 0;
+  vol3 = 0;
+  vol4 = 0;
+  vol5 = 0;
+  vol6 = 0;
+  vol6 = 0;
+  vol7 = 0;
+  vol8 = 0;
+  vol9 = 0;
+
+  userPresetIsLoaded = false;
+
+  selectKit(uPreKit);
 
   // activateHeader.classList.remove('presetBox-active');
   stepsData = [];
@@ -205,7 +220,7 @@ function createTable(rows, steps) {
     newTableSpace.classList.add('tableSpace');
     newTableSpace.setAttribute('id', 'mix' + i);
     newTableSpace.innerHTML = `
-      <input type="range" min="-50" max="10" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
+      <input type="range" min="-50" max="10" value="0" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
       <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter">
     `;
 
@@ -242,7 +257,6 @@ function createTable(rows, steps) {
   for (let i = 0; i < clickCells.length; i++) {
     clickCells[i].addEventListener('click', activateSteps);
   }
-
 }
 
 // ----------------------------------------------// 
@@ -290,6 +304,7 @@ function activateSteps() {
 // ----------------------------------------------// 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
+// Swing stuff 
 
 swingValue = document.getElementById("swingSlider").value = swingValueDef;
 const slider = document.getElementById("swingSlider");
@@ -359,7 +374,6 @@ function startLoop() {
   updateKnob7(knob7.value);
   updateKnob8(knob8.value);
 
-
   const repeat = (time) => {
 
     stepsData.forEach((arrayRows, index) => {
@@ -419,6 +433,7 @@ function startNow() {
 // ----------------------------------------------// 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
+// Paint DIV colors when playing
 
 function paintActive(index, beat, active) {
   const getDrawCell = document.querySelector('#row_' + index + '_' + beat);
@@ -448,11 +463,13 @@ function triggerMix(index) {
 }
 
 // ----------------------------------// 
+// Manage play/pause state
 
 function initialize() {
   Tone.start();
   startLoop();
   initialized = true;
+  copyButton.innerHTML = `Generate preset link & copy!`;
 }
 
 // ----------------------------------// 
@@ -493,9 +510,6 @@ function handlePlay() {
 
   });
 }
-
-
-
 
 
 // ----------------------------------------------// 
@@ -551,6 +565,7 @@ function isNumberKey(evt) {
 }
 
 // ----------------------------------// 
+// BPM STUFF
 
 bpmInput.addEventListener("change", function () {
   let v = parseInt(this.value);
@@ -599,11 +614,7 @@ const mouseUp = () => {
 // ----------------------------------------------// 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
-// JSON LOAD PRESET LIST
-
-
-
-
+// JSON LOAD PRESET LIST USED WITH DB
 
 function loadPresetList() {
 
@@ -668,11 +679,10 @@ function loadPresetList() {
     });
 }
 
-
 // ----------------------------------------------// 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
-// LISTEN TO SONG
+// LISTEN TO PRESET SONG USED WITH DB
 
 function listenToSong() {
 
@@ -764,6 +774,16 @@ function listenToSong() {
       updateKnob6(songsData.reverb);
       updateKnob7(songsData.lfoamount);
       updateKnob8(songsData.lfofreq);
+
+      updateVolumeSlider(0, vol1);
+      updateVolumeSlider(1, vol2);
+      updateVolumeSlider(2, vol3);
+      updateVolumeSlider(3, vol4);
+      updateVolumeSlider(4, vol5);
+      updateVolumeSlider(5, vol6);
+      updateVolumeSlider(6, vol7);
+      updateVolumeSlider(7, vol8);
+      updateVolumeSlider(8, vol9);
     });
 
   rowDiv = document.getElementById(id);
@@ -865,32 +885,43 @@ async function vote(vote) {
 // Handle copy preset link
 
 const copyButton = document.getElementById("urlCopyButton");
-const copyUrlText = document.getElementById("urlTextbox");
+// const copyUrlText = document.getElementById("urlTextbox");
 
 copyButton.addEventListener('click', function () {
   let generatedData = createUserPresetData();
-  let getUrl = window.location.host + '/?d=' + generatedData;
-  copyUrlText.value = getUrl;
+  if (!generatedData) {
+    copyButton.innerHTML = `You must make a sequence before sharing it!`;
+  } else {
+    copyButton.classList.add('green');
+    copyButton.innerHTML = `Copied to clipboard!`;
+    setTimeout(function () {
+      copyButton.classList.remove('green');
+      copyButton.innerHTML = `Generate preset link & copy!`;
+    }, 5000);
+  }
+  let getUrl = window.location.origin + '/?d=' + generatedData;
+  // copyUrlText.value = "getUrl";
   navigator.clipboard.writeText(getUrl);
-  // console.log(getUrl + " copied!");
 });
 
 
 // ----------------------------------------------// 
 
 window.addEventListener('load', function () {
+
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+
+  if (params.d) {
+    userPresetIsLoaded = true;
+  }
+
   createSynths();
   createTable(rows, steps);
   handlePlay();
   loadUserPresetData();
-  let getUrl = window.location.href;
-  copyUrlText.value = getUrl;
 });
-
-
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const getUserPresetFromUrl = urlParams.get('id');
 
 /* if(lastId == "" && !initialized) {
   listenToSong();

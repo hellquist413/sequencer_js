@@ -3,7 +3,7 @@
 
 function createUserPresetData() {
 
-    if(!initialized) { return ""; }
+    if(!initialized) { return; }
 
     let synth3Vol = Math.round(synth3.volume.value);
 
@@ -49,7 +49,7 @@ function createUserPresetData() {
     return presetData;
 }
 
-function loadUserPresetData(string) {
+function loadUserPresetData() {
 
     if (lastId == "" && !initialized) {
 
@@ -140,8 +140,8 @@ function loadUserPresetData(string) {
         updateVolumeSlider(8, decodedData.vol9);
 
     } else {
-        return;
+        return false;
     }
     
-    return;
+    return true;
 }
