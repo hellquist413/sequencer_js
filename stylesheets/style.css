@@ -28,7 +28,7 @@
   --buttonBackground: #FFFFFF;
   --buttonTextDecoration: #D1D5DB;
   --buttonHover: rgb(255, 186, 75);
-  --buttonHoverBorder: rgb(64, 64, 64);
+  --buttonHoverBorder: rgb(125, 125, 125);
   --filter: invert(28%) sepia(50%) saturate(147%) hue-rotate(6deg) brightness(118%) contrast(119%);
 }
 
@@ -405,7 +405,7 @@ input[type=number]::-webkit-outer-spin-button {
 @supports (-moz-appearance:none) {
   .slider {
     height: 25px;
-    background: var(--sliderBg3)
+    background: var(--sliderBg3);
     outline: none;
   }
 
@@ -414,7 +414,7 @@ input[type=number]::-webkit-outer-spin-button {
     height: 20px;
     border-radius: 0px;
     border: none;
-    background: var(--sliderBg2)
+    background: var(--sliderBg2);
   }
 }
 
@@ -861,7 +861,7 @@ input[type=number]::-webkit-outer-spin-button {
 .publishContent button {
   padding: 5px;
   background-color: var(--activeCell);
-  border: 1px solid #var(--btnborder);
+  border: 1px solid var(--btnborder);
   margin: 0px;
   width: 20%;
   min-width: 100%;
