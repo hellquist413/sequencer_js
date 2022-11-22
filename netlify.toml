@@ -3,6 +3,4 @@
   to = "https://api.short.io/links/public"
   status = 200
   force = true
-  headers = {X-From = "Netlify"}
-  signed = "pk_Fyb6rXgT61WeumwC"
-  Authorization = 'pk_Fyb6rXgT61WeumwC'
+  headers = {Authorization = 'pk_Fyb6rXgT61WeumwC'}
