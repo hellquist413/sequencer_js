@@ -1,4 +1,5 @@
 function createShortIO(urlToShorten) {
+    console.log(urlToShorten);
     const options = {
         method: 'POST',
         headers: {
