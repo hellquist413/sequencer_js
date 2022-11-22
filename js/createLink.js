@@ -9,7 +9,7 @@ function createShortIO(urlToShorten) {
         body: JSON.stringify({ originalURL: urlToShorten })
     };
 
-    fetch('/api/shortIO', options)
+    fetch('https://api.short.io/links/public', options)
         .then(response => response.json())
         .then(response => console.log(response))
         .catch(err => console.error(err));
