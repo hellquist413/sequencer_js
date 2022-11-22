@@ -3,7 +3,7 @@
   to = "https://api.short.io/links/public"
   status = 200
   force = true
-  signed "pk_Fyb6rXgT61WeumwC"
+  signed = "pk_Fyb6rXgT61WeumwC"
   headers = "{
     accept: 'application/json',
     'content-type': 'application/json',
