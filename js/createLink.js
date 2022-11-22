@@ -5,12 +5,11 @@ async function createShortIO(urlToShorten) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            authorization: 'pk_Fyb6rXgT61WeumwC'
+            Authorization: "pk_vSV7CQxm4bzxTYGQ"
         },
         body: JSON.stringify({
             originalURL: urlToShorten,
             domain: "5sc4.short.gy",
-            path: ""
         })
     }).then(response => {
       console.log(response.body);
