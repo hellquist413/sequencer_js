@@ -14,7 +14,7 @@ async function createShortIO(urlToShorten) {
       responseType: 'json'
     };
     
-    got(options).then(response => {
+    fetch(options).then(response => {
       console.log(response.body);
     });    
 
