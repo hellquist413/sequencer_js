@@ -1,4 +1,4 @@
-function createShortIO(urlToShorten) {
+async function createShortIO(urlToShorten) {
     console.log(urlToShorten);
     const options = {
         method: 'POST',
@@ -7,7 +7,7 @@ function createShortIO(urlToShorten) {
             'content-type': 'application/json',
             Authorization: 'pk_Fyb6rXgT61WeumwC'
         },
-        body: JSON.stringify({ originalURL: urlToShorten })
+        body: JSON.stringify({ originalURL: urlToShorten, domain: "example.com"})
     };
 
     fetch('/api/shortIO', options)
