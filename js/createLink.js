@@ -7,7 +7,7 @@ async function createShortIO(urlToShorten) {
             'content-type': 'application/json',
             Authorization: 'pk_Fyb6rXgT61WeumwC'
         },
-        body: JSON.stringify({ originalURL: urlToShorten, domain: "example.com"})
+        body: JSON.stringify({ originalURL: urlToShorten, domain: "5sc4.short.gy"})
     };
 
     fetch('/api/shortIO', options)
