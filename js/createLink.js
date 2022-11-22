@@ -4,9 +4,6 @@ async function createShortIO(urlToShorten) {
     const options = {
       method: 'POST',
       url: '/api/shortIO',
-      headers: {
-        authorization: 'pk_Fyb6rXgT61WeumwC',
-      },
       json: {
         originalURL: urlToShorten,
         domain: '5sc4.short.gy'
