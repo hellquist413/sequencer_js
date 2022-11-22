@@ -17,6 +17,6 @@ function createShortIO(urlToShorten) {
           })
     }).then(response => {
       console.log(response.json);
-    });    
+    });       
 
 }
