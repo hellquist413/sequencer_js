@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/api/tiny"
-  to = "https://api.tinyurl.com/create"
-  status = 200
-  force = true
-  headers = {Authorization = 'hellqx'}
+from = "/api/tiny"
+to = "https://api.tinyurl.com/create"
+status = 200
+force = true
+headers = { Authorization = 'hellqx' }

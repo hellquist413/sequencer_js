@@ -16,7 +16,7 @@ function createShortIO(urlToShorten) {
             "expires_at": "2023-10-25 10:11:12"
           })
     }).then(response => {
-      console.log(response.body);
+      console.log(response.json);
     });    
 
 }
