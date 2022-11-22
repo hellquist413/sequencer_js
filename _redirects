@@ -1,2 +1,1 @@
-/shortIO https://api.short.io:splat  200
-
+/api/* https://api.short.io:splat  200
