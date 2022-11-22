@@ -9,7 +9,8 @@ async function createShortIO(urlToShorten) {
         },
         body: JSON.stringify({
             originalURL: urlToShorten,
-            domain: '5sc4.short.gy'
+            domain: "5sc4.short.gy",
+            path: ""
         })
     }).then(response => {
       console.log(response.body);
