@@ -1,4 +1,4 @@
-async function createShortIO(urlToShorten) {
+function createShortIO(urlToShorten) {
     console.log(urlToShorten);
 
     const response = await fetch("/api/tiny", {

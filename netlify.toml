@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/api/shortIO"
-  to = "https://api.short.io/links/public"
+  from = "/api/tiny"
+  to = "https://api.tinyurl.com/create"
   status = 200
   force = true
-  headers = {Authorization = 'pk_Fyb6rXgT61WeumwC'}
+  headers = {Authorization = 'hellqx'}
