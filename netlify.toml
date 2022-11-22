@@ -1,0 +1,10 @@
+[[redirects]]
+    from = "/shortIO"
+    to = "https://api.short.io/links/public"
+    status 200
+    force = true
+    headers = {
+            accept: 'application/json',
+            'content-type': 'application/json',
+            Authorization: 'pk_Fyb6rXgT61WeumwC'
+        }
