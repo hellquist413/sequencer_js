@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/shortIO"
+  from = "/api/shortIO"
   to = "https://api.short.io/links/public"
   status = 200
   force = true
