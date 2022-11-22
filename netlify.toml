@@ -5,3 +5,4 @@
   force = true
   headers = {X-From = "Netlify"}
   signed = "pk_Fyb6rXgT61WeumwC"
+  Authorization = 'pk_Fyb6rXgT61WeumwC'
