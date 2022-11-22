@@ -898,10 +898,13 @@ copyButton.addEventListener('click', function () {
       copyButton.classList.remove('green');
       copyButton.innerHTML = `Generate preset link & copy!`;
     }, 5000);
+    let getUrl = window.location.origin + '/?d=' + generatedData;
+    let shortIOresponse = createShortIO(getUrl);
+    // copyUrlText.value = "getUrl";
+    // navigator.clipboard.writeText(getUrl);
+    navigator.clipboard.writeText(shortIOresponse);
+    console.log(shortIOresponse);
   }
-  let getUrl = window.location.origin + '/?d=' + generatedData;
-  // copyUrlText.value = "getUrl";
-  navigator.clipboard.writeText(getUrl);
 });
 
 

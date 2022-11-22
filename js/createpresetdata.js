@@ -43,9 +43,7 @@ function createUserPresetData() {
     // Encode URI
     dataToEncode = encodeURIComponent(dataToEncode);
     presetData = dataToEncode;
-
-    // console.log(atob(dataToEncode));
-    // window.history.replaceState("", "", '?d=' + dataToCompress);
+    
     return presetData;
 }
 
