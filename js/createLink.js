@@ -6,11 +6,13 @@ function createShortIO(urlToShorten) {
           'content-type': 'application/json',
           Authorization: 'pk_Fyb6rXgT61WeumwC'
         },
-        body: JSON.stringify({domain: 'https://5sc4.short.gy/j67Grw', originalURL: urlToShorten })
+        body: JSON.stringify({originalURL: urlToShorten})
       };
       
-      fetch('https://api.short.io/links', options)
+      fetch('https://api.short.io/links/public', options)
         .then(response => response.json())
         .then(response => console.log(response))
         .catch(err => console.error(err));
+
+        return response;
 }
