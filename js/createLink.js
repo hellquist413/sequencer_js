@@ -1,7 +1,7 @@
 function createShortIO(urlToShorten) {
     console.log(urlToShorten);
 
-    const response = await fetch("/api/tiny", {
+    const response = fetch("/api/tiny", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
