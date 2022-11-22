@@ -1,17 +1,17 @@
 async function createShortIO(urlToShorten) {
     console.log(urlToShorten);
-
-    const options = {
-      method: 'POST',
-      url: '/api/shortIO',
-      json: {
-        originalURL: urlToShorten,
-        domain: '5sc4.short.gy'
-      },
-      responseType: 'json'
-    };
     
-    fetch(options).then(response => {
+    const response = await fetch("/api/shortIO", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            authorization: 'pk_Fyb6rXgT61WeumwC'
+        },
+        body: JSON.stringify({
+            originalURL: urlToShorten,
+            domain: '5sc4.short.gy'
+        })
+    }).then(response => {
       console.log(response.body);
     });    
 
