@@ -115,7 +115,6 @@ function loadUserPresetData() {
     
         // activateHeader.classList.add("presetBox-active");
     
-        updateKnobVol(synthKnobVol);
         updateKnob1(synthKnob1);
         updateKnob2(synthKnob2);
         updateKnob3(synthKnob3);
