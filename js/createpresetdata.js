@@ -25,7 +25,6 @@ function createUserPresetData() {
         "vol7": sampler7.volume.value,
         "vol8": sampler8.volume.value,
         "vol9": synth3Vol,
-        "synthKnobVol": synth3Vol,
         "synthKnob1": synthKnob1,
         "synthKnob2": synthKnob2,
         "synthKnob3": synthKnob3,
@@ -82,7 +81,6 @@ function loadUserPresetData() {
         vol8 = decodedData.vol8;
         vol9 = decodedData.vol9;
 
-        synthKnobVol = decodedData.synthKnobVol;
         synthKnob1 = decodedData.synthKnob1;
         synthKnob2 = decodedData.synthKnob2;
         synthKnob3 = decodedData.synthKnob3;

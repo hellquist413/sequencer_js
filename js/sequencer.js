@@ -364,7 +364,7 @@ function startLoop() {
 
   let beat = 0;
   // Save synth preset if user change kit
-  updateKnobVol(knobVol.value);
+  // updateKnobVol(knobVol.value);
   updateKnob1(knob1.value);
   updateKnob2(knob2.value);
   updateKnob3(knob3.value);
@@ -682,7 +682,7 @@ function loadPresetList() {
 // ----------------------------------------------// 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
-// LISTEN TO PRESET SONG USED WITH DB
+// LISTEN TO PRESET SONG USED WITH DB loadPreset from data
 
 function listenToSong() {
 
@@ -765,7 +765,7 @@ function listenToSong() {
 
       activateHeader.classList.add("presetBox-active");
 
-      updateKnobVol(songsData.volume);
+      // updateKnobVol(songsData.volume);
       updateKnob1(songsData.semitone);
       updateKnob2(songsData.filtercutoff);
       updateKnob3(songsData.filterenvelope);
@@ -901,7 +901,6 @@ copyButton.addEventListener('click', function () {
     let getUrl = window.location.origin + '/?d=' + generatedData;
     let shortIOresponse = createShortIO(getUrl);
     navigator.clipboard.writeText(shortIOresponse);
-    console.log(shortIOresponse);
   }
 });
 
