@@ -37,6 +37,9 @@
 }
 
 body {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   min-height: 100vh;
   background: rgb(231, 231, 231);
   background: linear-gradient(0deg, var(--gradient1) 0%, var(--gradient2) 26%, var(--gradient3) 91%, rgba(161, 161, 161, 1) 100%);
@@ -129,7 +132,7 @@ body {
     width: 100% !important;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 0;
     color: var(--textColor);
     border-radius: 2%;
     box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
