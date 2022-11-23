@@ -17,7 +17,6 @@ async function createShortIO(urlToShorten) {
     shortIOresponse = data.shortURL;
     console.log(shortIOresponse);
     navigator.clipboard.writeText(shortIOresponse);
-    window.location.assign(shortIOresponse);
     return shortIOresponse;
   })
 }
