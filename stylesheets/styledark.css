@@ -1,31 +1,31 @@
 :root {
   --textColor: rgb(185, 185, 185);
-  --bgdiv1: #231138;
+  --bgdiv1: #190b28;
   --gradient1: rgb(17, 16, 42);
-  --gradient2: rgb(18, 12, 29);
+  --gradient2: rgb(60 37 103);
   --gradient3: rgb(44, 2, 38);
   --btnbg: #3a0ca5;
-  --btnborder: #462e6d;
+  --btnborder: #221b2d;
   --btnActive: rgb(168, 2, 173);
   --btnGreen: rgb(205, 31, 211);
-  --brightBox: rgb(187, 175, 255);
+  --brightBox: rgb(149 133 243);
   --minusActive: #3a0ca5;
-  --sliderColorBorder: rgb(76, 0, 255);
+  --sliderColorBorder: rgb(66 45 116);
   --sliderBg: rgb(246, 48, 130);
-  --sliderBg2: #7033ff;
+  --sliderBg2: #9120f4;
   --sliderBg3: rgb(246, 48, 130);
   --dropdownBg: rgba(0, 0, 0, 0.5);
   --dropdownBg2: #340088;
-  --tableheadbg: #3a0ca5;
-  --tableSpace: #3a0ca5;
+  --tableheadbg: #251549;
+  --tableSpace: #251549;
   --activeStep: #aa01f8;
   --flash: #aa01f8;
-  --forth: #2c1935;
-  --activeCell: #8d31f6;
+  --forth: #2b153e;
+  --activeCell: #5d75e3;
   --invertStep: #59a7e3;
-  --lightGray: #600c90;
+  --lightGray: #3f2151;
   --darkGray: rgb(4, 4, 4);
-  --buttonBackground: #3a0ca5;
+  --buttonBackground: #45288b;
   --buttonTextDecoration: #462e6d;
   --buttonHover: #3a0ca5;
   --buttonHoverBorder: #462e6d;
@@ -451,7 +451,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 10px;
 } */
 .dropdown {
-  position:inherit;
+  position: inherit;
   display: inline-block;
   margin: 0px;
   width: 164px;
@@ -930,7 +930,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Theme button */
 
 .theme {
-  position:fixed;
+  position: fixed;
   z-index: 100;
   left: 10px;
   top: 10px;
