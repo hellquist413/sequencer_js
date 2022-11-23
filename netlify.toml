@@ -1,9 +1,11 @@
 [[redirects]]
-from = "/*"
-to = "/index.html"
+from = "/api/shortIO"
+to = "https://api.short.io/links/public"
 status = 200
 
 [[headers]]
-for = "/*"
+for = "/api/shortIO"
     [headers.values]
-    Access-Control-Allow-Origin = "*"
+    accept = "application/json"
+    Content-Type = "application/json"
+    authorization = "pk_Fyb6rXgT61WeumwC"

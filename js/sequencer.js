@@ -900,8 +900,6 @@ copyButton.addEventListener('click', function () {
     }, 5000);
     let getUrl = window.location.origin + '/?d=' + generatedData;
     let shortIOresponse = createShortIO(getUrl);
-    // copyUrlText.value = "getUrl";
-    // navigator.clipboard.writeText(getUrl);
     navigator.clipboard.writeText(shortIOresponse);
     console.log(shortIOresponse);
   }

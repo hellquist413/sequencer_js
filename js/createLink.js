@@ -1,11 +1,22 @@
-function createShortIO(urlToShorten) {
-    console.log(urlToShorten);
-
-    shortIOquery = `https://api.short.cm/links/tweetbot?domain=5sc4.short.gy&apiKey=sk_PXVEvB8Biq7GcG7C&originalURL=` + urlToShorten;
-
-    const response = fetch(shortIOquery, {
-    }).then(response => {
-      console.log(response.json);
-    });       
-
+async function createShortIO(urlToShorten) {
+  var data = {
+    "domain": "5sc4.short.gy",
+    "originalURL": urlToShorten
+  };
+  await fetch('/api/shortIO', {
+    method: 'post',
+    headers: {
+      'accept': 'application/json',
+      'Content-Type': 'application/json',
+      'authorization': 'pk_Fyb6rXgT61WeumwC'
+    },
+    body: JSON.stringify(data)
+  }).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    shortIOresponse = data.shortURL;
+    console.log(shortIOresponse);
+    navigator.clipboard.writeText(shortIOresponse);
+    return shortIOresponse;
+  })
 }
