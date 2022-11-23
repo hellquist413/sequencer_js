@@ -1,6 +1,9 @@
 [[redirects]]
-from = "/api/tiny"
-to = "https://api.tinyurl.com/create"
+from = "/*"
+to = "/index.html"
 status = 200
-force = true
-headers = { Authorization = 'hellqx' }
+
+[[headers]]
+for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
