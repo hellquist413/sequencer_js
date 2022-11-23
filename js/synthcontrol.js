@@ -1,5 +1,5 @@
 
-const knobVol = document.getElementById("knobVol");
+/* const knobVol = document.getElementById("knobVol");
 knobVol.addEventListener("input", (event) => {
     synthKnobVol = event.target.value;
     synth3.volume.value = synthKnobVol;
@@ -10,7 +10,7 @@ function updateKnobVol(value) {
     knobVol.value = value;
     synth3.volume.value = value;
 }
-
+ */
 // ---------------------------------------------------// 
 
 const knob1 = document.getElementById("knob1");
