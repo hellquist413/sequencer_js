@@ -936,6 +936,9 @@ window.addEventListener('load', function () {
   createTable(rows, steps);
   handlePlay();
   loadUserPresetData();
+
+  activeKit(uPreKit);
+
 });
 
 /* if(lastId == "" && !initialized) {

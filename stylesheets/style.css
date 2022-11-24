@@ -624,7 +624,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 #tableHead {
   display: flex;
-  height: 15px;
+  height: 18px;
   bottom: 0px;
   left: 0px;
   width: 100%;
@@ -637,7 +637,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: 1px solid var(--sliderColorBorder);
   border-top-left-radius: 20px 20px;
   background-color: var(--tableheadbg);
-  min-width: 120px;
+  min-width: 130px;
 }
 
 #headSpan {
@@ -654,8 +654,8 @@ input[type=number]::-webkit-outer-spin-button {
   padding-top: 9px;
   border: solid 1px var(--sliderColorBorder);
   border-top: 0px;
-  min-width: 120px;
-  font-size: 0.7rem;
+  min-width: 130px;
+  font-size: 0.8rem;
 }
 
 .activeStep {
@@ -666,7 +666,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .sampleNames {
-  padding-left: 5px;
+  padding-left: 2px;
+  margin-top: -3px;
   font-family: var(--sampleFont);
 }
 

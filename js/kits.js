@@ -271,7 +271,6 @@ createKit = function (kit_id, kitName,
 
     previousKit = uPreKit;
     uPreKit = kit_id;
-
     
     if (initialized) {
         stopPlaying();
