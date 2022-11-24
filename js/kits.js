@@ -49,6 +49,9 @@ function selectKit(id) {
                 vol9 = -10;
             }
 
+            sampleNames = [];
+            sampleNames.push(sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8);
+
             createKit(kit_id, kitName,
                 sampleUrl, sample1, sample2, sample3, sample4,
                 sample5, sample6, sample7, sample8,
@@ -85,6 +88,9 @@ function selectKit(id) {
             note8 = "C2";
 
             note9 = "C2";
+
+            sampleNames = [];
+            sampleNames.push(sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8);
 
             if (userPresetIsLoaded === false && initialized === false) {
                 vol1 = -10;
@@ -136,6 +142,9 @@ function selectKit(id) {
             note8 = "C2";
 
             note9 = "C2";
+
+            sampleNames = [];
+            sampleNames.push(sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8);
 
             if (userPresetIsLoaded === false && initialized === false) {
                 vol1 = -2;
@@ -263,6 +272,7 @@ createKit = function (kit_id, kitName,
     previousKit = uPreKit;
     uPreKit = kit_id;
 
+    
     if (initialized) {
         stopPlaying();
         initialize();

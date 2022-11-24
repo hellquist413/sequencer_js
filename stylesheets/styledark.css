@@ -30,6 +30,7 @@
   --buttonHover: #3a0ca5;
   --buttonHoverBorder: #462e6d;
   --filter: invert(10%) sepia(20%) saturate(100%) hue-rotate(93deg) brightness(80%) contrast(150%);
+  --sampleFont: 'Saira', sans-serif;
 }
 
 * {
@@ -46,6 +47,8 @@ body {
   color: white;
   font-size: 1.5rem;
   font-family: 'PT Sans Narrow', sans-serif;
+    font-family: var(--sampleFont);
+
   padding: 0px;
   margin: 0px;
 }
@@ -582,7 +585,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .divTableRow {
   display: flex;
-  height: 50px;
+  height: 60px;
 }
 
 .divTableCell {
@@ -653,6 +656,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: solid 1px var(--sliderColorBorder);
   border-top: 0px;
   min-width: 120px;
+  font-size: 0.7rem;
 }
 
 .activeStep {
@@ -660,6 +664,11 @@ input[type=number]::-webkit-outer-spin-button {
   animation-duration: 400ms;
   opacity: 1;
   background-color: var(--activeStep) !important;
+}
+
+.sampleNames {
+  padding-left: 5px;
+  font-family: var(--sampleFont);
 }
 
 @keyframes flash {
@@ -901,7 +910,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: .5rem;
   box-sizing: border-box;
   color: var(--textColor);
-  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--sampleFont);
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.25rem;

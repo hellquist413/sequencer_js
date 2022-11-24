@@ -10,6 +10,7 @@ let bpm = 133;
 let songsData = [];
 let lastId = "";
 let currentKitName = "KrumQuist";
+let sampleNames = [];
 
 // ----------------------------------// 
 // User preset settings
@@ -219,13 +220,22 @@ function createTable(rows, steps) {
     let newTableSpace = document.createElement('div');
     newTableSpace.classList.add('tableSpace');
     newTableSpace.setAttribute('id', 'mix' + i);
+
+    let newSampleName = document.createElement('div');
+    newSampleName.classList.add('sampleNames');
+    newSampleName.setAttribute('id', 'SN_' + i);
+
+    // Check if 9th channel in the mixer is Synth
+    if (i === 8) { sampleN = "Monosynth"; } else { sampleN = sampleNames[i]; }
     newTableSpace.innerHTML = `
       <input type="range" min="-50" max="10" value="0" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
-      <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter">
-    `;
+      <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter"><br />
+      `;
 
     seq.querySelector('#row_' + i).appendChild(newTableSpace);
+    newTableSpace.appendChild(newSampleName);
 
+    updateSampleNames(i);
 
     // Create horizontal steps
 
@@ -257,6 +267,7 @@ function createTable(rows, steps) {
   for (let i = 0; i < clickCells.length; i++) {
     clickCells[i].addEventListener('click', activateSteps);
   }
+
 }
 
 // ----------------------------------------------// 
@@ -373,6 +384,10 @@ function startLoop() {
   updateKnob6(knob6.value);
   updateKnob7(knob7.value);
   updateKnob8(knob8.value);
+
+  for (let i = 0; i < 8; i++) {
+    updateSampleNames(i);
+  }
 
   const repeat = (time) => {
 
