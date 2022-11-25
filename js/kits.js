@@ -10,34 +10,20 @@ function selectKit(id) {
             kitName = "SubtiltQuist";
             sampleUrl = 'samples/SubtiltQuist/';
             kit_id = "1";
-
             sample1 = "openhat.wav";
-            note1 = "C2";
-
             sample2 = "hat_closed.wav";
-            note2 = "C2";
-
             sample3 = "snare.wav";
-            note3 = "C2";
-
             sample4 = "fx1.wav";
-
             sample5 = "fx.wav";
-            note5 = "C2";
-            note4 = "C2";
-
             sample6 = "percfx.wav";
-            note6 = "C2";
-
             sample7 = "minibs.wav";
-            note7 = "A3";
-
             sample8 = "KICK.wav";
-            note8 = "C2";
-
-            note9 = "C2";
-
+            
             if (userPresetIsLoaded === false && initialized === false) {
+                notes = [
+                    "C2", "C2", "C2",
+                    "C2", "C2", "C2",
+                    "A3", "C2", "C2" ];
                 vol1 = -2;
                 vol2 = -5;
                 vol3 = 5;
@@ -62,37 +48,23 @@ function selectKit(id) {
             kitName = "SSM";
             sampleUrl = 'samples/ssm/';
             kit_id = "2";
-
             sample1 = "ssm_MA_hihats_driver2_136.mp3";
-            note1 = "C2";
-
             sample2 = "ssm_MA_snare2_136.mp3";
-            note2 = "C2";
-
             sample3 = "ssm_MA_shake_rim_136.wav";
-            note3 = "C2";
-
             sample4 = "ssm_MA_perc_136.mp3";
-            note4 = "C2";
-
             sample5 = "ssm_MA_fx_stab_136.wav";
-            note5 = "C2";
-
             sample6 = "ssm_MA_bassyFill_136.wav";
-            note6 = "C2";
-
             sample7 = "ssm_MA_bassy_perc_136.wav";
-            note7 = "D2";
-
             sample8 = "ssm_MA_KICK_136.mp3";
-            note8 = "C2";
-
-            note9 = "C2";
 
             sampleNames = [];
             sampleNames.push(sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8);
 
             if (userPresetIsLoaded === false && initialized === false) {
+                notes = [
+                    "C2", "C2", "C2",
+                    "C2", "C2", "C2",
+                    "D2", "C2", "C2" ];
                 vol1 = -10;
                 vol2 = -3;
                 vol3 = -7;
@@ -107,7 +79,6 @@ function selectKit(id) {
             createKit(kit_id, kitName,
                 sampleUrl, sample1, sample2, sample3, sample4,
                 sample5, sample6, sample7, sample8,
-                note1, note2, note3, note4, note5, note6, note7, note8, note9,
                 vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9);
 
             break;
@@ -116,37 +87,23 @@ function selectKit(id) {
             kitName = "KrumQuist";
             sampleUrl = 'samples/krum/';
             kit_id = "3";
-
             sample1 = "133_hat.wav";
-            note1 = "C2";
-
             sample2 = "133_clap.wav";
-            note2 = "C2";
-
             sample3 = "133_perc.wav";
-            note3 = "C2";
-
             sample4 = "133_perc2.wav";
-            note4 = "C2";
-
             sample5 = "133_stab.wav";
-            note5 = "D2";
-
             sample6 = "133_bass.wav";
-            note6 = "C2";
-
             sample7 = "133_slurpeh_form.wav";
-            note7 = "A3";
-
             sample8 = "133_kick.wav";
-            note8 = "C2";
-
-            note9 = "C2";
 
             sampleNames = [];
             sampleNames.push(sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8);
-
+            
             if (userPresetIsLoaded === false && initialized === false) {
+                notes = [
+                    "C2", "C2", "C2",
+                    "C2", "D2", "C2",
+                    "A3", "C2", "C2" ];
                 vol1 = -2;
                 vol2 = 0;
                 vol3 = 2;
@@ -161,7 +118,6 @@ function selectKit(id) {
             createKit(kit_id, kitName,
                 sampleUrl, sample1, sample2, sample3, sample4,
                 sample5, sample6, sample7, sample8,
-                note1, note2, note3, note4, note5, note6, note7, note8, note9,
                 vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9);
 
             break;
@@ -170,19 +126,16 @@ function selectKit(id) {
 
 createKit = function (kit_id, kitName,
     sampleUrl, sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8,
-    note1, note2, note3, note4, note5, note6, note7, note8, note9,
     vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9) {
 
     currentKitName = kitName;
     synths = [];
-    notes = [];
 
     sampler = new Tone.Sampler({
         urls: { C2: sample1 },
         baseUrl: sampleUrl,
     }).connect(mixer);
     synths.push(sampler);
-    notes.push(note1);
     sampler.volume.value = vol1;
 
     sampler2 = new Tone.Sampler({
@@ -190,7 +143,6 @@ createKit = function (kit_id, kitName,
         baseUrl: sampleUrl,
     }).connect(mixer);
     synths.push(sampler2);
-    notes.push(note2);
     sampler2.volume.value = vol2;
 
     sampler3 = new Tone.Sampler({
@@ -198,14 +150,12 @@ createKit = function (kit_id, kitName,
         baseUrl: sampleUrl,
     }).connect(mixer);
     synths.push(sampler3);
-    notes.push(note3);
     sampler3.volume.value = vol3;
 
     sampler4 = new Tone.Sampler({
         urls: { G2: sample4 },
         baseUrl: sampleUrl,
     }).connect(mixer);
-    notes.push(note4);
     synths.push(sampler4);
     sampler4.volume.value = vol4;
 
@@ -214,7 +164,6 @@ createKit = function (kit_id, kitName,
         baseUrl: sampleUrl,
     }).connect(mixer);
     synths.push(sampler5);
-    notes.push(note5);
     sampler5.volume.value = vol5;
 
     sampler6 = new Tone.Sampler({
@@ -222,7 +171,6 @@ createKit = function (kit_id, kitName,
         baseUrl: sampleUrl,
     }).connect(mixer);
     synths.push(sampler6);
-    notes.push(note6);
     sampler6.volume.value = vol6;
 
     sampler7 = new Tone.Sampler({
@@ -230,7 +178,6 @@ createKit = function (kit_id, kitName,
         baseUrl: sampleUrl,
     }).connect(mixer);
     synths.push(sampler7);
-    notes.push(note7);
     sampler7.volume.value = vol7;
 
     sampler8 = new Tone.Sampler({
@@ -239,7 +186,6 @@ createKit = function (kit_id, kitName,
     }).connect(mixer);
     sampler8.volume.value = vol8;
     synths.push(sampler8);
-    notes.push(note8);
 
     synth3 = new Tone.MonoSynth({
         envelope: {
@@ -267,11 +213,9 @@ createKit = function (kit_id, kitName,
     synth3.volume.value = vol9;
     synth3.chain(pingPong, filter).connect(reverb);
     synths.push(synth3);
-    notes.push(note9);
-
     previousKit = uPreKit;
     uPreKit = kit_id;
-    
+
     if (initialized) {
         stopPlaying();
         initialize();
