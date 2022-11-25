@@ -27,7 +27,7 @@ let userPresetIsLoaded = false;
 // let activateHeader = document.querySelector('.presetBox');
 let bpmInput = document.getElementById('bpmInput');
 bpmInput.value = bpm;
-let previousKit;
+let previousKit = "";
 
 // Kits //
 let vol1 = 0;
@@ -358,9 +358,11 @@ function activeKit(value) {
   const grabSelectedKitClick = document.getElementById("kit" + value);
   grabSelectedKitClick.classList.add('green');
 
-  if (value !== previousKit) {
-    grabPreviousKitDOM = document.getElementById("kit" + previousKit);
-    grabPreviousKitDOM.classList.remove('green');
+  if (previousKit !== undefined) {
+    if (value !== previousKit) {
+      grabPreviousKitDOM = document.getElementById("kit" + previousKit);
+      grabPreviousKitDOM.classList.remove('green');
+    }
   }
 
   grabCurrentKitDOM.innerHTML = ('Kit: ' + currentKitName);

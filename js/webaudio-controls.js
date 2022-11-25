@@ -34,7 +34,6 @@ if(window.customElements){
   background-color: #268;
   border: solid 1px #888;
   box-shadow: 1px 1px 2px #888;
-  font-family: sans-serif;
   font-size: 11px;
   line-height:1.7em;
   text-align:center;
@@ -726,7 +725,6 @@ ${this.basestyle}
   position:relative;
   margin:0;
   padding:0;
-  font-family: sans-serif;
   font-size: 11px;
   cursor:pointer;
 }
@@ -1161,7 +1159,6 @@ ${this.basestyle}
   position:relative;
   margin:0;
   padding:0;
-  font-family: sans-serif;
   font-size: 11px;
   cursor:pointer;
 }
@@ -1413,23 +1410,22 @@ ${this.basestyle}
   user-select:none;
   margin:0;
   padding:0;
-  font-family: sans-serif;
   font-size: 8px;
   cursor:pointer;
   position:relative;
   vertical-align:baseline;
 }
-.webaudio-param-body{
+.webaudio-param-body {
   display:inline-block;
   position:relative;
   text-align:center;
   background:none;
   margin:0;
   padding:0;
-  font-family:sans-serif;
   font-size:11px;
   vertical-align:bottom;
   border:none;
+  color: var(--textColor);
 }
 </style>
 <input class='webaudio-param-body' value='0' tabindex='1' touch-action='none'/><div class='webaudioctrl-tooltip'></div>
@@ -1579,7 +1575,6 @@ ${this.basestyle}
   position:relative;
   margin:0;
   padding:0;
-  font-family: sans-serif;
   font-size: 11px;
 }
 .webaudio-keyboard-body{

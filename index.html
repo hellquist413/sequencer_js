@@ -1,5 +1,13 @@
 <!DOCTYPE html>
+<script>
+  WebAudioControlsOptions = {
+    paramWidth: 32,
+    paramHeight: 15,
+    paramColors: "",
+  };
+</script>
 <script src="js/webaudio-controls.js"></script>
+
 
 <script>
   var currentTheme = "light";
@@ -53,10 +61,13 @@
   }
 
 </script>
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300&display=swap" rel="stylesheet">
 <link id="theme" rel="stylesheet" href="/stylesheets/style.css">
+
 <div class="mydiv">
 
   <div id="publishScreen">
@@ -74,15 +85,10 @@
     </div>
     <a href="#" class="cancel">×</a>
   </div>
-  <div id="cover">
-  </div>
+  <div id="cover"><span id="clickme">Click me to initialize!</span></div>
 
-  <!--     <div class="mydivheader">
-      <div aligh="right">
-        <center>
-          <a onclick="toggleTheme();" style="cursor: pointer;" id="themeSwitch">Switch theme</a></div>
-        </center>
-
+  <!--
+    <div class="mydivheader">
 
       <div class="presetBox">
 
@@ -106,7 +112,9 @@
         </table>
 
       </div>
-    </div> -->
+    </div> 
+  -->
+
   <div class="contentBox">
 
     <div class="theme">
@@ -178,23 +186,17 @@
       <!-- js table -->
 
       <div class="divTableCellTop"></div>
+      <div class="seque" id="seq"></div>
 
       <!-- end of js table -->
-
-      <div class="seque" id="seq"></div>
       <div class="placeholder">
         <div class="synthContainer">
-<!--           <span>
-            <webaudio-knob id="knobVol" src="images/fx-2.png" min="-20" max="10" diameter="64" value="-2">
-            </webaudio-knob>
-            <br />
-            Volume
-          </span> -->
           <span>
-            <webaudio-knob id="knob1" src="images/fx-2.png" min="-2400" max="2400" diameter="64" value="-800"
-              step="100">
+            <webaudio-knob id="knob1" t ooltip="%s" src="images/fx-2.png" min="-2400" max="2400" diameter="64"
+              value="-800" step="100">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob1" class="parameter"></webaudio-param><br />
             Semitone
           </span>
 
@@ -202,6 +204,7 @@
             <webaudio-knob id="knob2" src="images/fx-2.png" min="1" max="1000" diameter="64" value="50">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob2" class="parameter"></webaudio-param><br />
             Filter Cutoff
           </span>
 
@@ -209,6 +212,7 @@
             <webaudio-knob id="knob3" src="images/fx-2.png" min="1" max="100" diameter="64" value="10">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob3" class="parameter"></webaudio-param><br />
             Filter Envelope
           </span>
 
@@ -216,6 +220,7 @@
             <webaudio-knob id="knob4" src="images/fx-2.png" min="0" max="100" diameter="64" value="17">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob4" class="parameter"></webaudio-param><br />
             Sustain
           </span>
 
@@ -223,6 +228,7 @@
             <webaudio-knob id="knob5" src="images/fx-2.png" min="0" max="100" diameter="64" value="0">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob5" class="parameter"></webaudio-param><br />
             Ping Pong
           </span>
 
@@ -230,6 +236,7 @@
             <webaudio-knob id="knob6" src="images/fx-2.png" min="0.1" max="100" diameter="64" value="0">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob6" class="parameter"></webaudio-param><br />
             Reverb
           </span>
 
@@ -237,6 +244,7 @@
             <webaudio-knob id="knob7" src="images/fx-2.png" min="0" max="100" diameter="64" value="22">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob7" class="parameter"></webaudio-param><br />
             LFO Amount
           </span>
 
@@ -244,6 +252,7 @@
             <webaudio-knob id="knob8" src="images/fx-2.png" min="1" max="100" diameter="64" value="25" log="3">
             </webaudio-knob>
             <br />
+            <webaudio-param link="knob8" class="parameter"></webaudio-param><br />
             LFO Freq
           </span>
           <br />
@@ -251,9 +260,9 @@
       </div>
 
     </div>
-    
+
   </div>
-  
+
   <div style="justify-content: center;width: 100%;display:flex;padding: 50px;">
     <button type="button" class="button-38" id="urlCopyButton">Generate preset link & copy!</button>
   </div>

@@ -5,7 +5,9 @@ function updateSampleNames(id) {
     } else {
         sampleN = sampleNames[id];
         sampleN = sampleN.replace('.wav', '');
-        sampleN = sampleN.replace(/_/g, '&nbsp;');
+        sampleN = sampleN.replace('.mp3', '');
+        sampleN = sampleN.replace('.aif', '');
+        sampleN = sampleN.replace(/_/g, ' ');
     }
     getSampleNames.innerHTML = sampleN;
 }

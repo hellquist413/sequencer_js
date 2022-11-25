@@ -1,18 +1,3 @@
-
-/* const knobVol = document.getElementById("knobVol");
-knobVol.addEventListener("input", (event) => {
-    synthKnobVol = event.target.value;
-    synth3.volume.value = synthKnobVol;
-    // console.log(synth3.volume.value);
-});
-
-function updateKnobVol(value) {
-    knobVol.value = value;
-    synth3.volume.value = value;
-}
- */
-// ---------------------------------------------------// 
-
 const knob1 = document.getElementById("knob1");
 knob1.addEventListener("input", (event) => {
     synthKnob1 = event.target.value;
@@ -106,8 +91,8 @@ const knob7 = document.getElementById("knob7");
 knob7.addEventListener("input", (event) => {
     synthKnob7 = event.target.value;
     filter.wet.value = synthKnob7 * 0.01;
-});
 
+});
 function updateKnob7(value) {
     knob7.value = value;
     value *= 0.01;
@@ -119,7 +104,9 @@ const knob8 = document.getElementById("knob8");
 knob8.addEventListener("input", (event) => {
     synthKnob8 = event.target.value;
     filter.frequency.value = synthKnob8;
-});
+})
+
+
 
 function updateKnob8(value) {
     knob8.value = value;
