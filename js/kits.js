@@ -46,7 +46,7 @@ function selectKit(id) {
                 vol6 = -2;
                 vol7 = -5;
                 vol8 = 0;
-                vol9 = -10;
+                vol9 = 0;
             }
 
             sampleNames = [];
@@ -101,7 +101,7 @@ function selectKit(id) {
                 vol6 = 2;
                 vol7 = 0;
                 vol8 = 2;
-                vol9 = -10;
+                vol9 = 0;
             }
 
             createKit(kit_id, kitName,
@@ -155,7 +155,7 @@ function selectKit(id) {
                 vol6 = 5;
                 vol7 = -10;
                 vol8 = 0;
-                vol9 = -10;
+                vol9 = 0;
             }
 
             createKit(kit_id, kitName,
