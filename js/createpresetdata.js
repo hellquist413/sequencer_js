@@ -11,6 +11,7 @@ function createUserPresetData() {
     {
         "rows": rows,
         "steps": steps,
+        "notes": notes,
         "stepsData": stepsData,
         "swingValueDef": swingValueDef,
         "swingSubDiv": swingSubDiv,
@@ -66,6 +67,7 @@ function loadUserPresetData() {
         rows = decodedData.rows;
         steps = decodedData.steps;
         stepsData = decodedData.stepsData;
+        notes = decodedData.notes;
         swingValueDef = decodedData.swingValueDef;
         swingSubDiv = decodedData.swingSubDiv;
         bpm = decodedData.bpm;
@@ -133,6 +135,20 @@ function loadUserPresetData() {
         updateVolumeSlider(6, decodedData.vol7);
         updateVolumeSlider(7, decodedData.vol8);
         updateVolumeSlider(8, decodedData.vol9);
+
+        for(let i = 0; i < 9; i++) {
+            updatePitchKnobs(i, notes[i]);
+          }
+
+/*         updatePitchKnobs(0, notes[0]);
+        updatePitchKnobs(1, notes[1]);
+        updatePitchKnobs(2, notes[2]);
+        updatePitchKnobs(3, notes[3]);
+        updatePitchKnobs(4, notes[4]);
+        updatePitchKnobs(5, notes[5]);
+        updatePitchKnobs(6, notes[6]);
+        updatePitchKnobs(7, notes[7]);
+        updatePitchKnobs(8, notes[8]); */
 
     } else {
         return false;
