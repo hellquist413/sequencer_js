@@ -35,6 +35,7 @@ function volumeChange(channelId) {
             break;
         case 8:
             synth3.volume.value = getValue;
+            vol9 = getValue;
             break;
     }
 }
