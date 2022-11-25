@@ -268,6 +268,15 @@ function createTable(rows, steps) {
     clickCells[i].addEventListener('click', activateSteps);
   }
 
+  updateVolumeSlider(0, vol1);
+  updateVolumeSlider(1, vol2);
+  updateVolumeSlider(2, vol3);
+  updateVolumeSlider(3, vol4);
+  updateVolumeSlider(4, vol5);
+  updateVolumeSlider(5, vol6);
+  updateVolumeSlider(6, vol7);
+  updateVolumeSlider(7, vol8);
+  updateVolumeSlider(8, vol9);
 }
 
 // ----------------------------------------------// 
