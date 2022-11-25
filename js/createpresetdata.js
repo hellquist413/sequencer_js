@@ -50,16 +50,16 @@ function loadUserPresetData() {
 
     if (lastId == "" && !initialized) {
 
-        notes = [];
-
+        
         // Search URL
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
         });
-
+        
         // Get parameter d= from URL & decode to JS Object
         encodedData = params.d;
         if(!encodedData) { return; }
+        notes = [];
         encodedData = decodeURIComponent(encodedData);
         decodedData = atob(encodedData);
         decodedData = JSON.parse(decodedData);
