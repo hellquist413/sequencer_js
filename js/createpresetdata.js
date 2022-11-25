@@ -139,7 +139,7 @@ function loadUserPresetData() {
         for(let i = 0; i < 9; i++) {
             updatePitchKnobs(i, notes[i]);
           }
-
+          console.table(notes);
 /*         updatePitchKnobs(0, notes[0]);
         updatePitchKnobs(1, notes[1]);
         updatePitchKnobs(2, notes[2]);
