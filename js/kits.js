@@ -209,6 +209,8 @@ createKit = function (kit_id, kitName,
         }
     });
 
+    getDetune = document.getElementById("knob1").value;
+    synth3.detune.value = getDetune;
     synth3.volume.value = vol9;
     synth3.chain(pingPong, filter).connect(reverb);
     synths.push(synth3);
