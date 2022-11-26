@@ -148,6 +148,10 @@ function resetStepsArray() {
   vol8 = 0;
   vol9 = 0;
 
+  notes = ["36", "36", "36",
+  "36", "36", "36",
+  "57", "36", "36" ];
+
   userPresetIsLoaded = false;
 
   selectKit(uPreKit);
@@ -397,16 +401,6 @@ function startLoop() {
   for (let i = 0; i < 8; i++) {
     updateSampleNames(i);
   }
-
-/*   updatePitchKnobs(0, notes[0]);
-  updatePitchKnobs(1, notes[1]);
-  updatePitchKnobs(2, notes[2]);
-  updatePitchKnobs(3, notes[3]);
-  updatePitchKnobs(4, notes[4]);
-  updatePitchKnobs(5, notes[5]);
-  updatePitchKnobs(6, notes[6]);
-  updatePitchKnobs(7, notes[7]);
-  updatePitchKnobs(8, notes[8]); */
 
   const repeat = (time) => {
 
