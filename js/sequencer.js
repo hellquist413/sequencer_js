@@ -95,7 +95,10 @@ filter.connect(mixer);
 vol.toDestination();
 
 let synths = [];
-let notes = [];
+let notes = [
+  "36", "36", "36",
+  "36", "36", "36",
+  "57", "36", "36" ];
 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
@@ -224,10 +227,21 @@ function createTable(rows, steps) {
     newSampleName.classList.add('sampleNames');
     newSampleName.setAttribute('id', 'SN_' + i);
 
+    let newKnob = document.createElement('webaudio-knob');
+/*     newKnob.classList.add('pitchknob');
+    newKnob.setAttribute('id', 'pitchKnob_' + i);
+    newKnob.setAttribute('src', 'images/fx-2.png');
+    newKnob.setAttribute('tooltip', '%s');
+    newKnob.setAttribute('min', '0');
+    newKnob.setAttribute('max', '127');
+    newKnob.setAttribute('diameter', '32');
+    newKnob.setAttribute('value', notes[i]); */
+
+
     // Check if 9th channel in the mixer is Synth
     if (i === 8) { sampleN = "Monosynth"; } else { sampleN = sampleNames[i]; }
     newTableSpace.innerHTML = `
-    <webaudio-knob id="pitchKnob_` + i + `" src="images/fx-2.png" tooltip="%s" min="0" max="127" value="64" diameter="32" value="64" oninput="pitchChange(` + instrumentId + `)" class="pitchKnob">
+    <webaudio-knob id="pitchKnob_` + i + `" src="images/fx-2.png" tooltip="%s" min="0" max="127" diameter="32" value="`+ notes[i] + `" oninput="pitchChange(` + instrumentId + `)" class="pitchKnob">
     </webaudio-knob>
       <input type="range" min="-50" max="10" value="0" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
       <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter">

@@ -109,7 +109,7 @@ function selectKit(id) {
                 notes = [
                     "36", "36", "36",
                     "36", "36", "36",
-                    "57", "36", "99" ];
+                    "57", "36", "36" ];
             }
             
             if (userPresetIsLoaded === false && initialized === false) {
