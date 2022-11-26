@@ -12,7 +12,7 @@ function createUserPresetData() {
         "steps": steps,
         "notes": notes,
         "stepsData": stepsData,
-        "swingValueDef": swingValueDef,
+        "swingValue": swingValue,
         "swingSubDiv": swingSubDiv,
         "bpm": bpm,
         "currentKitName": uPreKit,
@@ -68,7 +68,7 @@ function loadUserPresetData() {
         steps = decodedData.steps;
         stepsData = decodedData.stepsData;
         notes = decodedData.notes;
-        swingValueDef = decodedData.swingValueDef;
+        swingValue = decodedData.swingValue;
         swingSubDiv = decodedData.swingSubDiv;
         bpm = decodedData.bpm;
         uPreKit = decodedData.currentKitName;
@@ -99,7 +99,9 @@ function loadUserPresetData() {
         createTable(rows, steps);
         selectKit(uPreKit);
         bpmInput.value = bpm;
-        let swingValue = document.getElementById("swingSlider").value = swingValueDef;
+        let swingSliderValue = document.getElementById("swingSlider");
+        swingSliderValue.value = swingValue;
+        changeSwing();
 
         // rowDiv = document.getElementById(id);
         const getAllKitsList = document.querySelectorAll('.kitc');
@@ -122,7 +124,7 @@ function loadUserPresetData() {
         updateKnob3(synthKnob3);
         updateKnob4(synthKnob4);
         updateKnob5(synthKnob5);
-        updateKnob6(synthKnob6);
+        updateKnob6(Math.round(synthKnob6));
         updateKnob7(synthKnob7);
         updateKnob8(synthKnob8);
 
@@ -146,8 +148,8 @@ function loadUserPresetData() {
         updatePitchKnobs(7, decodedData.notes[7]);
         updatePitchKnobs(8, decodedData.notes[8]);
 
+
     } else {
-        
         return false;
     }
     return true;

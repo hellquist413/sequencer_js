@@ -3,7 +3,7 @@ let steps = 32;
 let isPlaying = false;
 let initialized = false;
 let stepsData = [];
-let swingValueDef = 8;
+let swingValueDef = 5;
 let swingSubDiv = '32n';
 let bpm = 133;
 let songsData = [];
@@ -336,11 +336,16 @@ function activateSteps() {
 // ----------------------------------------------// 
 // Swing stuff 
 
-swingValue = document.getElementById("swingSlider").value = swingValueDef;
+swingValue = swingValue = document.getElementById("swingSlider").value;
 const slider = document.getElementById("swingSlider");
 
 slider.oninput = function () {
   swingValue = slider.value;
+  var swing = (swingValue / 100);
+  Tone.Transport.swing = swing;
+}
+
+function changeSwing() {
   var swing = (swingValue / 100);
   Tone.Transport.swing = swing;
 }
