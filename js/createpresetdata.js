@@ -71,7 +71,7 @@ function loadUserPresetData() {
         swingValueDef = decodedData.swingValueDef;
         swingSubDiv = decodedData.swingSubDiv;
         bpm = decodedData.bpm;
-        currentKitName = decodedData.currentKitName;
+        uPreKit = decodedData.currentKitName;
 
         vol1 = decodedData.vol1;
         vol2 = decodedData.vol2;
