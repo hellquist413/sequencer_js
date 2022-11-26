@@ -986,3 +986,11 @@ input[type=number]::-webkit-outer-spin-button {
   border: 1px solid var(--btnborder);
   background-color: var(--btnbg);
 }
+
+.popDown {
+  opacity: 0;
+}
+
+.popDown:hover {
+  opacity: 100%;
+}

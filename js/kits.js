@@ -4,7 +4,6 @@ function selectKit(id) {
     if (initialized) {
         disposeKit();
     }
-    notes = [];
 
     switch (id) {
         case "1":

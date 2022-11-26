@@ -196,7 +196,7 @@
               value="-800" step="100">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob1" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob1" class="parameter" id="param_1"></webaudio-param><br />
             Semitone
           </span>
 
@@ -204,7 +204,7 @@
             <webaudio-knob id="knob2" src="images/fx-2.png" min="1" max="1000" diameter="64" value="50">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob2" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob2" class="parameter" id="param_2"></webaudio-param><br />
             Filter Cutoff
           </span>
 
@@ -212,7 +212,7 @@
             <webaudio-knob id="knob3" src="images/fx-2.png" min="1" max="100" diameter="64" value="10">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob3" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob3" class="parameter" id="param_3"></webaudio-param><br />
             Filter Envelope
           </span>
 
@@ -220,7 +220,7 @@
             <webaudio-knob id="knob4" src="images/fx-2.png" min="0" max="100" diameter="64" value="17">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob4" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob4" class="parameter" id="param_4"></webaudio-param><br />
             Sustain
           </span>
 
@@ -228,7 +228,7 @@
             <webaudio-knob id="knob5" src="images/fx-2.png" min="0" max="100" diameter="64" value="0">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob5" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob5" class="parameter" id="param_5"></webaudio-param><br />
             Ping Pong
           </span>
 
@@ -236,7 +236,7 @@
             <webaudio-knob id="knob6" src="images/fx-2.png" min="0.1" max="100" diameter="64" value="0">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob6" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob6" class="parameter" id="param_6"></webaudio-param><br />
             Reverb
           </span>
 
@@ -244,7 +244,7 @@
             <webaudio-knob id="knob7" src="images/fx-2.png" min="0" max="100" diameter="64" value="22">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob7" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob7" class="parameter" id="param_7"></webaudio-param><br />
             LFO Amount
           </span>
 
@@ -252,7 +252,7 @@
             <webaudio-knob id="knob8" src="images/fx-2.png" min="1" max="100" diameter="64" value="25" log="3">
             </webaudio-knob>
             <br />
-            <webaudio-param link="knob8" class="parameter"></webaudio-param><br />
+            <webaudio-param link="knob8" class="parameter" id="param_8"></webaudio-param><br />
             LFO Freq
           </span>
           <br />
@@ -265,6 +265,7 @@
 
   <div style="justify-content: center;width: 100%;display:flex;padding: 50px;">
     <button type="button" class="button-38" id="urlCopyButton">Generate preset link & copy!</button>
+      <button type="button" class="button-38" id="downloadPreset" onclick="downloadPreset()">Download preset!</button>
   </div>
 </div>
 </div>
@@ -280,4 +281,5 @@
 <script src="js/createLink.js"></script>
 <script src="js/updatesamplenames.js"></script>
 <script src="js/pitchchange.js"></script>
+<script src="js/downloadpreset.js"></script>
 <script src="js/sequencer.js"></script>

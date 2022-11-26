@@ -487,7 +487,7 @@ function paintActive(index, beat, active) {
 
 function triggerMix(index) {
   if (initialized === true) {
-    synths[index].triggerAttackRelease(notes[index], '4n');
+    synths[index].triggerAttackRelease(Tone.Midi(notes[index]), '4n');
   } else {
     initialize();
     stopPlaying();
@@ -947,9 +947,7 @@ window.addEventListener('load', function () {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  if (params.d) {
-    userPresetIsLoaded = true;
-  }
+  if (params.d) { userPresetIsLoaded = true; }
 
   createSynths();
   createTable(rows, steps);
