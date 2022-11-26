@@ -147,8 +147,8 @@ function loadUserPresetData() {
         updatePitchKnobs(8, decodedData.notes[8]);
 
     } else {
+        
         return false;
     }
-
     return true;
 }

@@ -4,6 +4,7 @@ async function createShortIO(urlToShorten) {
     "originalURL": urlToShorten
   };
   await fetch('/api/shortIO', {
+ // await fetch('https://api.short.io/links/public', {
       method: 'post',
     headers: {
       'accept': 'application/json',

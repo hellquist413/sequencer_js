@@ -227,7 +227,7 @@ function createTable(rows, steps) {
     // Check if 9th channel in the mixer is Synth
     if (i === 8) { sampleN = "Monosynth"; } else { sampleN = sampleNames[i]; }
     newTableSpace.innerHTML = `
-    <webaudio-knob id="pitchKnob_` + i + `" src="images/fx-2.png" tooltip="%s" min="0" max="127" diameter="32" value="64" oninput="pitchChange(` + instrumentId + `)" class="pitchKnob">
+    <webaudio-knob id="pitchKnob_` + i + `" src="images/fx-2.png" tooltip="%s" min="0" max="127" value="64" diameter="32" value="64" oninput="pitchChange(` + instrumentId + `)" class="pitchKnob">
     </webaudio-knob>
       <input type="range" min="-50" max="10" value="0" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
       <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter">
@@ -380,10 +380,19 @@ function startLoop() {
   // Save synth preset if user change kit
   // updateKnobVol(knobVol.value);
 
-
   for (let i = 0; i < 8; i++) {
     updateSampleNames(i);
   }
+
+/*   updatePitchKnobs(0, notes[0]);
+  updatePitchKnobs(1, notes[1]);
+  updatePitchKnobs(2, notes[2]);
+  updatePitchKnobs(3, notes[3]);
+  updatePitchKnobs(4, notes[4]);
+  updatePitchKnobs(5, notes[5]);
+  updatePitchKnobs(6, notes[6]);
+  updatePitchKnobs(7, notes[7]);
+  updatePitchKnobs(8, notes[8]); */
 
   const repeat = (time) => {
 
@@ -435,7 +444,6 @@ function startLoop() {
 // ----------------------------------------------// 
 
 function startNow() {
-
   Tone.Transport.bpm.value = bpm;
   Tone.Transport.subdivision = swingSubDiv;
   Tone.Transport.start();
@@ -795,6 +803,7 @@ function listenToSong() {
       updateVolumeSlider(6, vol7);
       updateVolumeSlider(7, vol8);
       updateVolumeSlider(8, vol9);
+      
     });
 
   rowDiv = document.getElementById(id);
@@ -932,18 +941,7 @@ window.addEventListener('load', function () {
   createTable(rows, steps);
   handlePlay();
   loadUserPresetData();
-
   activeKit(uPreKit);
-
-  updatePitchKnobs(0, notes[0]);
-  updatePitchKnobs(1, notes[1]);
-  updatePitchKnobs(2, notes[2]);
-  updatePitchKnobs(3, notes[3]);
-  updatePitchKnobs(4, notes[4]);
-  updatePitchKnobs(5, notes[5]);
-  updatePitchKnobs(6, notes[6]);
-  updatePitchKnobs(7, notes[7]);
-  updatePitchKnobs(8, notes[8]);
 });
 
 /* if(lastId == "" && !initialized) {

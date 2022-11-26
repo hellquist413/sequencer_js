@@ -4,6 +4,7 @@ function selectKit(id) {
     if (initialized) {
         disposeKit();
     }
+    notes = [];
 
     switch (id) {
         case "1":
@@ -19,11 +20,14 @@ function selectKit(id) {
             sample7 = "minibs.wav";
             sample8 = "KICK.wav";
             
-            if (userPresetIsLoaded === false && initialized === false) {
+            if(userPresetIsLoaded === false) {
                 notes = [
-                    "C2", "C2", "C2",
-                    "C2", "C2", "C2",
-                    "A3", "C2", "C2" ];
+                    "36", "36", "36",
+                    "36", "36", "36",
+                    "57", "36", "36" ];
+            }
+
+            if (userPresetIsLoaded === false && initialized === false) {
                 vol1 = -2;
                 vol2 = -5;
                 vol3 = 5;
@@ -59,11 +63,14 @@ function selectKit(id) {
             sampleNames = [];
             sampleNames.push(sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8);
 
-            if (userPresetIsLoaded === false && initialized === false) {
+            if(userPresetIsLoaded === false) {
                 notes = [
-                    "C2", "C2", "C2",
-                    "C2", "C2", "C2",
-                    "D2", "C2", "C2" ];
+                    "36", "36", "36",
+                    "36", "36", "36",
+                    "57", "36", "36" ];
+            }
+
+            if (userPresetIsLoaded === false && initialized === false) {
                 vol1 = -10;
                 vol2 = -3;
                 vol3 = -7;
@@ -97,12 +104,15 @@ function selectKit(id) {
 
             sampleNames = [];
             sampleNames.push(sample1, sample2, sample3, sample4, sample5, sample6, sample7, sample8);
+
+            if(userPresetIsLoaded === false) {
+                notes = [
+                    "36", "36", "36",
+                    "36", "36", "36",
+                    "57", "36", "99" ];
+            }
             
             if (userPresetIsLoaded === false && initialized === false) {
-                notes = [
-                    "C2", "C2", "C2",
-                    "C2", "D2", "C2",
-                    "A3", "C2", "C2" ];
                 vol1 = -2;
                 vol2 = 0;
                 vol3 = 2;
