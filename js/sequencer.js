@@ -269,17 +269,6 @@ function createTable(rows, steps) {
     clickCells[i].addEventListener('click', activateSteps);
   }
 
-  updateVolumeSlider(0, vol1);
-  updateVolumeSlider(1, vol2);
-  updateVolumeSlider(2, vol3);
-  updateVolumeSlider(3, vol4);
-  updateVolumeSlider(4, vol5);
-  updateVolumeSlider(5, vol6);
-  updateVolumeSlider(6, vol7);
-  updateVolumeSlider(7, vol8);
-  updateVolumeSlider(8, vol9);
-
-  for(let i = 0; i < 9; i++) { updatePitchKnobs(i, notes[i]); }
 }
 
 // ----------------------------------------------// 
@@ -390,14 +379,7 @@ function startLoop() {
   let beat = 0;
   // Save synth preset if user change kit
   // updateKnobVol(knobVol.value);
-  updateKnob1(knob1.value);
-  updateKnob2(knob2.value);
-  updateKnob3(knob3.value);
-  updateKnob4(knob4.value);
-  updateKnob5(knob5.value);
-  updateKnob6(knob6.value);
-  updateKnob7(knob7.value);
-  updateKnob8(knob8.value);
+
 
   for (let i = 0; i < 8; i++) {
     updateSampleNames(i);
@@ -412,12 +394,12 @@ function startLoop() {
       if (note === 1) {
 
         if (index == 8) {
-          synth3.triggerAttackRelease(notes[index], '16n', time + 0.1);
+          synth3.triggerAttackRelease(Tone.Midi(notes[index]), '16n', time + 0.1);
           // synth.triggerAttackRelease(notes[index], '16n', time + 0.1);
         } else if (index == 7) {
-          synth.triggerAttackRelease(notes[index], '1n', time + 0.1);
+          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.1);
         } else {
-          synth.triggerAttackRelease(notes[index], '1n', time + 0.1);
+          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.1);
         }
       }
 
@@ -953,6 +935,15 @@ window.addEventListener('load', function () {
 
   activeKit(uPreKit);
 
+  updatePitchKnobs(0, notes[0]);
+  updatePitchKnobs(1, notes[1]);
+  updatePitchKnobs(2, notes[2]);
+  updatePitchKnobs(3, notes[3]);
+  updatePitchKnobs(4, notes[4]);
+  updatePitchKnobs(5, notes[5]);
+  updatePitchKnobs(6, notes[6]);
+  updatePitchKnobs(7, notes[7]);
+  updatePitchKnobs(8, notes[8]);
 });
 
 /* if(lastId == "" && !initialized) {

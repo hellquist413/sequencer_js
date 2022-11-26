@@ -41,7 +41,6 @@ function selectKit(id) {
             createKit(kit_id, kitName,
                 sampleUrl, sample1, sample2, sample3, sample4,
                 sample5, sample6, sample7, sample8,
-                note1, note2, note3, note4, note5, note6, note7, note8, note9,
                 vol1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9);
             break;
         case "2":

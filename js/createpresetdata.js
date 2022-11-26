@@ -3,7 +3,7 @@
 
 function createUserPresetData() {
 
-    if(!initialized) { return; }
+    if (!initialized) { return; }
 
     let synth3Vol = Math.round(synth3.volume.value);
     let preset_JSON_Object =
@@ -42,7 +42,7 @@ function createUserPresetData() {
     // Encode URI
     dataToEncode = encodeURIComponent(dataToEncode);
     presetData = dataToEncode;
-    
+
     return presetData;
 }
 
@@ -50,20 +50,19 @@ function loadUserPresetData() {
 
     if (lastId == "" && !initialized) {
 
-        
         // Search URL
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
         });
-        
+
         // Get parameter d= from URL & decode to JS Object
         encodedData = params.d;
-        if(!encodedData) { return; }
+        if (!encodedData) { return; }
         notes = [];
         encodedData = decodeURIComponent(encodedData);
         decodedData = atob(encodedData);
         decodedData = JSON.parse(decodedData);
-        
+
         // Setup data
         rows = decodedData.rows;
         steps = decodedData.steps;
@@ -73,7 +72,7 @@ function loadUserPresetData() {
         swingSubDiv = decodedData.swingSubDiv;
         bpm = decodedData.bpm;
         currentKitName = decodedData.currentKitName;
-        
+
         vol1 = decodedData.vol1;
         vol2 = decodedData.vol2;
         vol3 = decodedData.vol3;
@@ -92,7 +91,7 @@ function loadUserPresetData() {
         synthKnob6 = decodedData.synthKnob6;
         synthKnob7 = decodedData.synthKnob7;
         synthKnob8 = decodedData.synthKnob8;
-     
+
         // Update values in DOM
         let userPresetIsLoaded = true;
         Tone.Draw.cancel();
@@ -104,20 +103,20 @@ function loadUserPresetData() {
 
         // rowDiv = document.getElementById(id);
         const getAllKitsList = document.querySelectorAll('.kitc');
-    
+
         for (let j = 0; j < getAllKitsList.length; j++) {
             getAllKitsList[j].classList.remove('green');
         }
-    
+
         newActiveKit = document.getElementById('kit' + uPreKit);
         newActiveKit.classList.add('green');
-    
+
         let getKitName = kitNames(uPreKit)
         setPresetKit = document.getElementById('displayKit');
         setPresetKit.innerHTML = 'Kit: ' + getKitName;
-    
+
         // activateHeader.classList.add("presetBox-active");
-    
+
         updateKnob1(synthKnob1);
         updateKnob2(synthKnob2);
         updateKnob3(synthKnob3);
@@ -136,15 +135,20 @@ function loadUserPresetData() {
         updateVolumeSlider(6, decodedData.vol7);
         updateVolumeSlider(7, decodedData.vol8);
         updateVolumeSlider(8, decodedData.vol9);
-
-        for(let i = 0; i < 9; i++) {
-            updatePitchKnobs(i, notes[i]);
-          }
-          console.table(notes);
+        
+        updatePitchKnobs(0, decodedData.notes[0]);
+        updatePitchKnobs(1, decodedData.notes[1]);
+        updatePitchKnobs(2, decodedData.notes[2]);
+        updatePitchKnobs(3, decodedData.notes[3]);
+        updatePitchKnobs(4, decodedData.notes[4]);
+        updatePitchKnobs(5, decodedData.notes[5]);
+        updatePitchKnobs(6, decodedData.notes[6]);
+        updatePitchKnobs(7, decodedData.notes[7]);
+        updatePitchKnobs(8, decodedData.notes[8]);
 
     } else {
         return false;
     }
-    
+
     return true;
 }

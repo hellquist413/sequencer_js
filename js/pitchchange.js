@@ -33,43 +33,43 @@ function pitchChange(instId) {
 
 
 function updatePitchKnobs(knobId, pitchValue) {
-    let getKnob = document.getElementById("pitchKnob_" + knobId).value;
+    let getKnob = document.getElementById("pitchKnob_" + knobId);
     switch (knobId) {
         case 0:
-            notes[0] = pitchValue;
             getKnob.value = pitchValue;
+            notes[0] = pitchValue;
             break;
         case 1:
-            notes[1] = pitchValue;
             getKnob.value = pitchValue;
+            notes[1] = pitchValue;
             break;
         case 2:
-            notes[2] = pitchValue;
             getKnob.value = pitchValue;
+            notes[2] = pitchValue;
             break;
         case 3:
-            notes[3] = pitchValue;
             getKnob.value = pitchValue;
+            notes[3] = pitchValue;
             break;
         case 4:
-            notes[4] = pitchValue;
             getKnob.value = pitchValue;
+            notes[4] = pitchValue;
             break;
         case 5:
-            notes[5] = pitchValue;
             getKnob.value = pitchValue;
+            notes[5] = pitchValue;
             break;
         case 6:
-            notes[6] = pitchValue;
             getKnob.value = pitchValue;
+            notes[6] = pitchValue;
             break;
         case 7:
-            notes[7] = pitchValue;
             getKnob.value = pitchValue;
+            notes[7] = pitchValue;
             break;
         case 8:
-            notes[8] = pitchValue;
             getKnob.value = pitchValue;
+            notes[8] = pitchValue;
             break;
     }
 

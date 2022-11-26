@@ -4,7 +4,7 @@ async function createShortIO(urlToShorten) {
     "originalURL": urlToShorten
   };
   await fetch('/api/shortIO', {
-    method: 'post',
+      method: 'post',
     headers: {
       'accept': 'application/json',
       'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ async function createShortIO(urlToShorten) {
     return response.json();
   }).then(function (data) {
     shortIOresponse = data.shortURL;
-    console.log(shortIOresponse);
+    // console.log(shortIOresponse);
     navigator.clipboard.writeText(shortIOresponse);
     return shortIOresponse;
   })
