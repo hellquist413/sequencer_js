@@ -15,7 +15,7 @@ function createUserPresetData() {
         "swingValueDef": swingValueDef,
         "swingSubDiv": swingSubDiv,
         "bpm": bpm,
-        "currentKitName": currentKitName,
+        "currentKitName": uPreKit,
         "vol1": sampler.volume.value,
         "vol2": sampler2.volume.value,
         "vol3": sampler3.volume.value,
