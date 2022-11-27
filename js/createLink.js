@@ -3,7 +3,7 @@ async function createShortIO(urlToShorten) {
     "domain": "5sc4.short.gy",
     "originalURL": urlToShorten
   };
-  await fetch('/.netlify/functions/shortIO/shortIOlinks', {
+  await fetch('/api/shortIO', {
  // await fetch('https://api.short.io/links/public', {
       method: 'post',
     headers: {
