@@ -893,6 +893,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-family: var(--sampleFont);
 }
 
+
 @keyframes flash {
   0% {
     background-color: var(--flash);
@@ -927,10 +928,28 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 .cellActive {
-  background-color: var(--activeCell) !important;
+  background-color: var(--activeCell);
   border: 1px solid var(--sliderColorBorder);
   border-top: 0px;
   display: flex;
+}
+
+.cellActive:hover {
+  animation-name: mixactiveAnim;
+  animation-duration: 0.2s;
+}
+@keyframes mixactiveAnim {
+  0% {
+    background-color: none;
+  }
+  50% {
+    background-color: white !important;
+    border-inline: 10px solid var(--sliderColorBorder);
+    writing-mode: horizontal-tb;
+  }
+  100% {
+    background-color: none;
+  }
 }
 
 .invertStep {
