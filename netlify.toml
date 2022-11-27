@@ -1,3 +1,7 @@
+[build]
+    function = "functions/"
+    publish = ""
+
 [[redirects]]
 from = "/api/shortIO"
 to = "https://api.short.io/links/public"
@@ -9,3 +13,6 @@ for = "/api/shortIO"
     accept = "application/json"
     Content-Type = "application/json"
     authorization = "pk_Fyb6rXgT61WeumwC"
+
+[dev]
+    functionsPort=3000

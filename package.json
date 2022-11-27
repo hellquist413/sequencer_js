@@ -1,0 +1,24 @@
+{
+  "name": "sequencer.js",
+  "version": "1.0.0",
+  "description": "Sequencer JS",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "debug": "netlify dev --inspect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellquist413/sequencer_js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellquist413/sequencer_js/issues"
+  },
+  "homepage": "https://github.com/hellquist413/sequencer_js#readme",
+  "dependencies": {
+    "netlify-cli": "^2.37.0",
+    "node-fetch": "^2.6.7"
+  }
+}
