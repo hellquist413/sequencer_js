@@ -30,7 +30,7 @@
   --buttonHover: rgb(255, 186, 75);
   --buttonHoverBorder: rgb(125, 125, 125);
   --filter: invert(28%) sepia(50%) saturate(147%) hue-rotate(6deg) brightness(118%) contrast(119%);
-  --sampleFont: 'Saira', sans-serif;  
+  --sampleFont: 'Saira', sans-serif;
   --coverBlockBg: rgba(0, 0, 0, 0.6);
   --paramBg: rgb(255, 255, 255);
   --paramBorder: rgb(190, 190, 190);
@@ -131,10 +131,11 @@ body {
 /* content ------------------------------- */
 /* --------------------------------------- */
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
   .mydiv {
     background-color: var(--bgdiv1);
     width: 100% !important;
+    min-width: 950px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
@@ -151,14 +152,216 @@ body {
 
 .mydiv {
   background-color: var(--bgdiv1);
+  background-repeat: repeat-x;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
   color: var(--textColor);
   border-radius: 0%;
   box-shadow: 200px 20px 180px 200px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: mydivAnimation;
+  animation-duration: 0.1s;
+}
+
+.mydivThin {
+  background-color: var(--bgdiv1);
+  background-repeat: repeat-x;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  color: var(--textColor);
+  padding-right: 250px;
+  border-radius: 0%;
+  box-shadow: 200px 20px 180px 200px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: mydivAnimation2;
+  animation-duration: 0.1s;
+  animation-direction: reverse;
+}
+
+@keyframes mydivAnimation {
+  0% {
+    padding-right: 250px;
+  }
+
+  100% {
+    padding-right: 0px;
+  }
+}
+
+@keyframes mydivAnimation2 {
+  0% {
+    padding-right: 250px;
+  }
+
+  100% {
+    padding-right: 0px;
+  }
+}
+
+.sidebarclassThin {
+  position: fixed;
+  background-color: var(--sliderBg3);
+  width: 0px;
+  right: 0;
+  height: 100%;
+  border-left: 0px solid var(--btnborder);
+  z-index: 100;
+  font-size: 1rem;
+  animation-name: sidebarAnimation2;
+  animation-duration: 0.1s;
+  animation-direction: reverse;
+}
+
+.sidebarclass {
+  position: fixed;
+  background-color: var(--sliderBg3);
+  width: 250px;
+  right: 0;
+  height: 100%;
+  border-left: 1px solid var(--btnborder);
+  z-index: 100;
+  font-size: 1rem;
+  animation-name: sidebarAnimation;
+  animation-duration: 0.1s;
+}
+
+@keyframes sidebarAnimation {
+  0% {
+    width: 15px
+  }
+
+  90% {
+    width: 200px
+  }
+
+  100% {
+    width: 250px
+  }
+}
+
+@keyframes sidebarAnimation2 {
+  0% {
+    width: 15px
+  }
+
+  90% {
+    width: 200px
+  }
+
+  100% {
+    width: 250px
+  }
+}
+
+.sidebarclassborder {
+  position: fixed;
+  background-color: var(--btnActive);
+  width: 30px;
+  right: 0;
+  height: 100%;
+  z-index: 100;
+  opacity: 50%;
+  padding: 3px;
+  writing-mode: vertical-rl;
+  text-orientation: sideways-right;
+}
+
+.sidebarclassborderActive {
+  position: fixed;
+  background-color: var(--btnActive);
+  width: 250px;
+  right: 0;
+  height: 30px;
+  z-index: 100;
+  opacity: 100%;
+  padding: 3px;
+  font-size: 1rem;
+  cursor: pointer;
+  animation-name: sidebarAnimation2;
+  animation-duration: 0.4s;
+  animation-fill-mode:both;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+@keyframes sidebarAnimation2 {
+  0% {
+    width: 30px;
+    height: 100%;
+  }
+
+  50% {
+    width: 30px;
+    height: 30px;
+  }
+  90% {
+    padding-left: 120px;
+    font-size: 0.6rem;
+  }
+  100% {
+    width: 250px;
+    height: 30px;
+  }
+}
+
+.sidebarclassborder:hover {
+  background-color: var(--btnActive);
+  opacity: 100%;
+  width: 30px;
+  animation-name: sideBarHover;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+
+@keyframes sideBarHover {
+  0% { width: 30px}
+
+  20% {
+    width: 40px
+  }
+
+  100% {
+    width: 30px
+  }
+}
+
+.sidebarcontent {
+  min-width: 250px;
+  margin-top: 40px;
+  font-size: 1rem;
+  height: 100%;
+}
+
+.sidebarcontent h1 {
+  font-size: 1.2rem;
+}
+
+#presetlistSidebar {
+  color: var(--textColor);
+  min-width: 250px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border: 0px solid black;
+  overflow:visible;
+  max-height: 50%;
+  height: 50%;
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
+#optionsSidebar {
+  color: var(--textColor);
+  min-width: 250px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border: 0px solid black;
+  padding-left: 5px;
+  padding-right: 5px;
+
 }
 
 .mydivheader {
@@ -180,9 +383,10 @@ body {
 }
 
 .controls {
-  position: relative;
+  position: absolute;
   padding: 0;
   margin: 0;
+  min-width: 800px;
   border: 0px solid black;
 }
 
@@ -302,16 +506,20 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 50px;
 }
 
+.synthContainer {
+  width: 100%;
+}
+
 .synthContainer span {
   position: relative;
   text-align: center;
   font-size: 0.6em;
-  width: auto;
+  width: 100px;
   float: left;
   align-items: center;
-  min-width: 12.5%;
+  min-width: calc(100%/8);
   max-height: 100px;
-  min-height: 100px;
+  min-height: 120px;
   border: 0px solid var(--btnbg);
 }
 
@@ -333,6 +541,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 2px;
   height: 40px;
   right: 0px;
+  top: 6px;
   margin-bottom: 10px;
   z-index: 15;
 }
@@ -349,22 +558,24 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .quantity {
+  position: absolute;
   width: 50px;
+  height: 40px;
 }
 
 .minus {
-  display: absolute;
+  position: absolute;
   width: 40px;
-  height: 35px;
+  height: 28px;
   font-size: 0.7em;
   left: 0px;
 }
 
 .plus {
-  display: absolute;
+  position: absolute;
   margin: 0px;
   width: 40px;
-  height: 35px;
+  height: 28px;
   font-size: 0.7em;
   right: 0px;
 }
@@ -380,7 +591,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: bold;
   text-align: center;
   border: 1px solid var(--btnborder);
-  height: 35px;
+  height: 28px;
   font-size: 0.7em;
 }
 
@@ -430,6 +641,10 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 
+#playBtn {
+  min-width: 70px;
+}
+
 .slider:hover {
   opacity: 0.6;
 }
@@ -448,28 +663,17 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
 }
 
-/* Swing selector */
-
-/* .dropdown {
-  position: relative;
-  display: inline-block;
-  background-color: #cccccc;
-  border: 1px solid #adadad;
-  margin: 0px;
-  width: 164px;
-  height: 35px;
-  text-align: left;
-  top: 0px;
-  margin-bottom: 10px;
-} */
 .dropdown {
   position: inherit;
   display: inline-block;
   margin: 0px;
   width: 164px;
   text-align: left;
-  height: 38px;
-  top: 4px;
+  height: 28px;
+  margin-top: 8px;
+  margin-left: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .dropdown-content {
@@ -484,6 +688,7 @@ input[type=number]::-webkit-outer-spin-button {
   -ms-user-select: none;
   user-select: none;
   left: -1px;
+  top: 25px;
 }
 
 .dropdown-content span {
@@ -505,29 +710,29 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #displaySwing {
+  position: absolute;
   cursor: pointer;
+  margin-top: 3px;
+  height: 30px;
+  width: 200px;
+  margin-left: -70px;
+  text-align: left;
 }
 
-/* Kit selector */
-/* .dropdown-kit {
-  position: relative;
-  display: inline-block;
-  background-color: #cccccc;
-  border: 1px solid #adadad;
-  margin-top: 0;
-  text-align: left;
-  margin-bottom: 0px;
-  height: 35px;
-  top: 0px;
-  padding-left: 10px;
-  padding-right: 10px;
-} */
+#swingSliderSpan {
+  position: absolute;
+  left: 210px;
+  width: 170px;
+  margin-left: -190px;
+  height: 10px;
+  top: -5px;
+}
 
 .dropdown-kit {
   position: relative;
   display: inline-block;
   text-align: left;
-  top: 4px;
+  top: 3px;
   padding-left: 5px;
   padding-right: 10px;
 }
@@ -569,7 +774,15 @@ input[type=number]::-webkit-outer-spin-button {
 #displayKit {
   cursor: pointer;
   font-size: 1em;
+  min-width: 220px;
+}
 
+#minusBar {
+  min-width: 50px;
+}
+
+#plusBar {
+  min-width: 50px;
 }
 
 /* --------------------------------------- */
@@ -602,6 +815,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 100%;
   border: 1px solid var(--sliderColorBorder);
   border-top: 0px;
+  min-width: 20px;
 }
 
 .divTableCellTop {
@@ -611,6 +825,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0px;
   width: 100%;
   border-top: 0px;
+  min-width: 20px;
 }
 
 
@@ -933,7 +1148,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.25rem;
-  padding: .5rem 2rem;
+  padding: .2rem 1rem;
   text-align: center;
   text-decoration: none var(---buttonTextDecoration) solid;
   text-decoration-thickness: auto;

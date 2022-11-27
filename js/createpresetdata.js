@@ -35,7 +35,7 @@ function createUserPresetData() {
         "synthKnob8": synthKnob8
     };
 
-    // convert to JSON
+    // Convert to JSON
     preset_JSON_Object = JSON.stringify(preset_JSON_Object);
     // Base64 ASCII string
     dataToEncode = btoa(preset_JSON_Object);
@@ -93,7 +93,7 @@ function loadUserPresetData() {
         synthKnob8 = decodedData.synthKnob8;
 
         // Update values in DOM
-        let userPresetIsLoaded = true;
+        userPresetIsLoaded = true;
         Tone.Draw.cancel();
         swingSub(swingSubDiv);
         createTable(rows, steps);
@@ -147,7 +147,6 @@ function loadUserPresetData() {
         updatePitchKnobs(6, decodedData.notes[6]);
         updatePitchKnobs(7, decodedData.notes[7]);
         updatePitchKnobs(8, decodedData.notes[8]);
-
 
     } else {
         return false;

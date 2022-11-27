@@ -131,7 +131,7 @@ body {
 /* content ------------------------------- */
 /* --------------------------------------- */
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   .mydiv {
     background-color: var(--bgdiv1);
     width: 100% !important;
@@ -151,7 +151,7 @@ body {
 
 .mydiv {
   background-color: var(--bgdiv1);
-  width: 100%;
+  width: 100vw;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
@@ -180,9 +180,10 @@ body {
 }
 
 .controls {
-  position: relative;
+  position: absolute;
   padding: 0;
   margin: 0;
+  min-width: 800px;
   border: 0px solid black;
 }
 
@@ -302,16 +303,20 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 50px;
 }
 
+.synthContainer {
+  width: 100%;
+}
+
 .synthContainer span {
   position: relative;
   text-align: center;
   font-size: 0.6em;
-  width: auto;
+  width: 100px;
   float: left;
   align-items: center;
-  min-width: 12.5%;
+  min-width: calc(100%/8);
   max-height: 100px;
-  min-height: 100px;
+  min-height: 120px;
   border: 0px solid var(--btnbg);
 }
 
@@ -333,6 +338,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 2px;
   height: 40px;
   right: 0px;
+  top: 6px;
   margin-bottom: 10px;
   z-index: 15;
 }
@@ -349,22 +355,24 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .quantity {
+  position: absolute;
   width: 50px;
+  height: 40px;
 }
 
 .minus {
-  display: absolute;
+  position: absolute;
   width: 40px;
-  height: 35px;
+  height: 28px;
   font-size: 0.7em;
   left: 0px;
 }
 
 .plus {
-  display: absolute;
+  position: absolute;
   margin: 0px;
   width: 40px;
-  height: 35px;
+  height: 28px;
   font-size: 0.7em;
   right: 0px;
 }
@@ -380,7 +388,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-weight: bold;
   text-align: center;
   border: 1px solid var(--btnborder);
-  height: 35px;
+  height: 28px;
   font-size: 0.7em;
 }
 
@@ -430,6 +438,10 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 
+#playBtn {
+  min-width: 70px;
+}
+
 .slider:hover {
   opacity: 0.6;
 }
@@ -448,28 +460,17 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer;
 }
 
-/* Swing selector */
-
-/* .dropdown {
-  position: relative;
-  display: inline-block;
-  background-color: #cccccc;
-  border: 1px solid #adadad;
-  margin: 0px;
-  width: 164px;
-  height: 35px;
-  text-align: left;
-  top: 0px;
-  margin-bottom: 10px;
-} */
 .dropdown {
   position: inherit;
   display: inline-block;
   margin: 0px;
   width: 164px;
   text-align: left;
-  height: 38px;
-  top: 4px;
+  height: 28px;
+  margin-top: 8px;
+  margin-left: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .dropdown-content {
@@ -484,6 +485,7 @@ input[type=number]::-webkit-outer-spin-button {
   -ms-user-select: none;
   user-select: none;
   left: -1px;
+  top: 25px;
 }
 
 .dropdown-content span {
@@ -505,29 +507,29 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #displaySwing {
+  position:absolute;
   cursor: pointer;
+  margin-top: 3px;
+  height: 30px;
+  width: 200px;
+  margin-left: -70px;
+  text-align: left;
 }
 
-/* Kit selector */
-/* .dropdown-kit {
-  position: relative;
-  display: inline-block;
-  background-color: #cccccc;
-  border: 1px solid #adadad;
-  margin-top: 0;
-  text-align: left;
-  margin-bottom: 0px;
-  height: 35px;
-  top: 0px;
-  padding-left: 10px;
-  padding-right: 10px;
-} */
+#swingSliderSpan {
+  position: absolute;
+  left: 210px;
+  width: 170px;
+  margin-left: -190px;
+  height: 10px;
+  top: -5px;
+}
 
 .dropdown-kit {
   position: relative;
   display: inline-block;
   text-align: left;
-  top: 4px;
+  top: 3px;
   padding-left: 5px;
   padding-right: 10px;
 }
@@ -569,9 +571,15 @@ input[type=number]::-webkit-outer-spin-button {
 #displayKit {
   cursor: pointer;
   font-size: 1em;
-
+  min-width: 220px;
 }
 
+#minusBar {
+  min-width: 50px;
+}
+#plusBar {
+  min-width: 50px;
+}
 /* --------------------------------------- */
 /* Divtable ------------------------------ */
 /* --------------------------------------- */
@@ -933,7 +941,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.25rem;
-  padding: .5rem 2rem;
+  padding: .2rem 1rem;
   text-align: center;
   text-decoration: none var(---buttonTextDecoration) solid;
   text-decoration-thickness: auto;
@@ -985,4 +993,12 @@ input[type=number]::-webkit-outer-spin-button {
   position: absolute;
   border: 1px solid var(--btnborder);
   background-color: var(--btnbg);
+}
+
+.popDown {
+  opacity: 0;
+}
+
+.popDown:hover {
+  opacity: 100%;
 }

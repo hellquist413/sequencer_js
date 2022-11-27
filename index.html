@@ -68,8 +68,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300&display=swap" rel="stylesheet">
 <link id="theme" rel="stylesheet" href="/stylesheets/style.css">
 
-<div class="mydiv">
+<div id="sidebar" class="sidebarclassThin">
+  <div id="sidebarborder" class="sidebarclassborder"><span>➘ options</span></div>
+  <div id="sidebarcontent" class="sidebarcontent">
+    <div id="presetlistSidebar">
+      <h1>Recent presets</h1>
+      <div id="presetIOlist"></div>
+    </div>
+    <div id="optionsSidebar">
+      <h1>Util</h1>
+      <button type="button" style="margin-left: 15px" class="button-38" id="downloadPreset"
+        onclick="downloadPreset()">Download preset!</button>
+    </div>
+  </div>
+</div>
 
+<div class="mydiv" id="mydiv">
   <div id="publishScreen">
     <div class="publishContent">
       <form action="sequencer/publish" method="POST" id="submitForm">
@@ -163,8 +177,10 @@
 
       <div class="dropdown button-slider">
 
-        <span id="displaySwing" style="width: 40px;text-align: left;">32n</span>
-        <input type="range" min="0" max="50" value="5" class="slider button-slider" id="swingSlider">
+        <span id="displaySwing">32n</span>
+        <span id="swingSliderSpan">
+          <input type="range" min="0" max="50" value="5" class="slider button-slider" id="swingSlider">
+        </span>
 
         <div class="dropdown-content">
           <span onclick="swingSub('4n')" id="4n">4n</span>
@@ -181,95 +197,109 @@
           <span onclick="swingSub('32t')" id="32t">32t</span>
         </div>
       </div>
-
-
-      <!-- js table -->
-
-      <div class="divTableCellTop"></div>
-      <div class="seque" id="seq"></div>
-
-      <!-- end of js table -->
-      <div class="placeholder">
-        <div class="synthContainer">
-          <span>
-            <webaudio-knob id="knob1" t ooltip="%s" src="images/fx-2.png" min="-2400" max="2400" diameter="64"
-              value="-800" step="100">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob1" class="parameter" id="param_1"></webaudio-param><br />
-            Semitone
-          </span>
-
-          <span>
-            <webaudio-knob id="knob2" src="images/fx-2.png" min="1" max="1000" diameter="64" value="50">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob2" class="parameter" id="param_2"></webaudio-param><br />
-            Filter Cutoff
-          </span>
-
-          <span>
-            <webaudio-knob id="knob3" src="images/fx-2.png" min="1" max="100" diameter="64" value="10">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob3" class="parameter" id="param_3"></webaudio-param><br />
-            Filter Envelope
-          </span>
-
-          <span>
-            <webaudio-knob id="knob4" src="images/fx-2.png" min="0" max="100" diameter="64" value="17">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob4" class="parameter" id="param_4"></webaudio-param><br />
-            Sustain
-          </span>
-
-          <span>
-            <webaudio-knob id="knob5" src="images/fx-2.png" min="0" max="100" diameter="64" value="0">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob5" class="parameter" id="param_5"></webaudio-param><br />
-            Ping Pong
-          </span>
-
-          <span>
-            <webaudio-knob id="knob6" src="images/fx-2.png" min="0.1" max="100" diameter="64" value="0">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob6" class="parameter" id="param_6"></webaudio-param><br />
-            Reverb
-          </span>
-
-          <span>
-            <webaudio-knob id="knob7" src="images/fx-2.png" min="0" max="100" diameter="64" value="22">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob7" class="parameter" id="param_7"></webaudio-param><br />
-            LFO Amount
-          </span>
-
-          <span>
-            <webaudio-knob id="knob8" src="images/fx-2.png" min="1" max="100" diameter="64" value="25" log="3">
-            </webaudio-knob>
-            <br />
-            <webaudio-param link="knob8" class="parameter" id="param_8"></webaudio-param><br />
-            LFO Freq
-          </span>
-          <br />
-        </div>
-      </div>
-
     </div>
+
+    <!-- js table -->
+
+    <div class="divTableCellTop"></div>
+    <div class="seque" id="seq"></div>
+
+    <!-- end of js table -->
+    <div class="placeholder">
+      <div class="synthContainer">
+        <span>
+          <webaudio-knob id="knob1" t ooltip="%s" src="images/fx-2.png" min="-2400" max="2400" diameter="64" value="0"
+            step="100">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob1" class="parameter" id="param_1"></webaudio-param><br />
+          Semitone
+        </span>
+
+        <span>
+          <webaudio-knob id="knob2" src="images/fx-2.png" min="1" max="1000" diameter="64" value="50">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob2" class="parameter" id="param_2"></webaudio-param><br />
+          Filter Cutoff
+        </span>
+
+        <span>
+          <webaudio-knob id="knob3" src="images/fx-2.png" min="1" max="100" diameter="64" value="10">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob3" class="parameter" id="param_3"></webaudio-param><br />
+          Filter Envelope
+        </span>
+
+        <span>
+          <webaudio-knob id="knob4" src="images/fx-2.png" min="0" max="100" diameter="64" value="12">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob4" class="parameter" id="param_4"></webaudio-param><br />
+          Sustain
+        </span>
+
+        <span>
+          <webaudio-knob id="knob5" src="images/fx-2.png" min="0" max="100" diameter="64" value="0">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob5" class="parameter" id="param_5"></webaudio-param><br />
+          Ping Pong
+        </span>
+
+        <span>
+          <webaudio-knob id="knob6" src="images/fx-2.png" min="0.1" max="100" diameter="64" value="0">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob6" class="parameter" id="param_6"></webaudio-param><br />
+          Reverb
+        </span>
+
+        <span>
+          <webaudio-knob id="knob7" src="images/fx-2.png" min="0" max="100" diameter="64" value="22">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob7" class="parameter" id="param_7"></webaudio-param><br />
+          LFO Amount
+        </span>
+
+        <span>
+          <webaudio-knob id="knob8" src="images/fx-2.png" min="1" max="100" diameter="64" value="25" log="3">
+          </webaudio-knob>
+          <br />
+          <webaudio-param link="knob8" class="parameter" id="param_8"></webaudio-param><br />
+          LFO Freq
+        </span>
+        <br />
+      </div>
+    </div>
+
 
   </div>
 
   <div style="justify-content: center;width: 100%;display:flex;padding: 50px;">
     <button type="button" class="button-38" id="urlCopyButton">Generate preset link & copy!</button>
-      <button type="button" class="button-38" id="downloadPreset" onclick="downloadPreset()">Download preset!</button>
   </div>
 </div>
 </div>
 
+<script>
+  sidebarborder = document.getElementById("sidebarborder");
+  sidebar = document.getElementById("sidebar");
+  mydiv = document.getElementById("mydiv");
+  sidebarborder.addEventListener("click", event => {
+    sidebarborder.classList.toggle("sidebarclassborderActive");
+    sidebarborder.classList.toggle("sidebarclassborder");
+
+    sidebar.classList.toggle("sidebarclassThin");
+    sidebar.classList.toggle("sidebarclass");
+    mydiv.classList.toggle("mydivThin");
+    mydiv.classList.toggle("mydiv");
+
+    getShortIOBulk();
+  });
+</script>
 
 <script src="js/Tone.js"></script>
 <script src="js/input-knobs.js"></script>

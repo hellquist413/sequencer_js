@@ -1,3 +1,4 @@
+// Knob 1 : Semitone
 const knob1 = document.getElementById("knob1");
 const param1 = document.getElementById("param_1");
 knob1.addEventListener("input", (event) => {
@@ -5,15 +6,13 @@ knob1.addEventListener("input", (event) => {
     synth3.detune.value = synthKnob1;
 });
 
-
 function updateKnob1(value) {
     knob1.value = value;
     param1.value = value;
     synth3.detune.value = value;
 }
 
-// ---------------------------------------------------// 
-
+// Knob 2 : Filter Cutoff
 const knob2 = document.getElementById("knob2");
 const param2 = document.getElementById("param_2");
 knob2.addEventListener("input", (event) => {
@@ -27,8 +26,7 @@ function updateKnob2(value) {
     synth3.filterEnvelope.baseFrequency = value;
 }
 
-// ---------------------------------------------------// 
-
+// Knob 4 : Sustain
 const knob3 = document.getElementById("knob3");
 const param3 = document.getElementById("param_3");
 knob3.addEventListener("input", (event) => {
@@ -47,8 +45,7 @@ function updateKnob3(value) {
     synth3.filterEnvelope.release = value * 10;
 }
 
-// ---------------------------------------------------// 
-
+// Knob 4 : Ping Pong
 const knob4 = document.getElementById("knob4");
 const param4 = document.getElementById("param_4");
 knob4.addEventListener("input", (event) => {
@@ -65,8 +62,7 @@ function updateKnob4(value) {
     synth3.envelope.decay = value;
 }
 
-// ---------------------------------------------------// 
-
+// Knob 5 : Reverb
 const knob5 = document.getElementById("knob5");
 const param5 = document.getElementById("param_5");
 knob5.addEventListener("input", (event) => {
@@ -81,8 +77,7 @@ function updateKnob5(value) {
     pingPong.wet.value = value;
 }
 
-// ---------------------------------------------------// 
-
+// Knob 6 : LFO Amount
 const knob6 = document.getElementById("knob6");
 const param6 = document.getElementById("param_6");
 knob6.addEventListener("input", (event) => {
@@ -97,8 +92,7 @@ function updateKnob6(value) {
     pingPong.wet.value = value;
 }
 
-// ---------------------------------------------------// 
-
+// Knob 7 LFO Freq
 const knob7 = document.getElementById("knob7");
 const param7 = document.getElementById("param_7");
 knob7.addEventListener("input", (event) => {
@@ -111,8 +105,8 @@ function updateKnob7(value) {
     value *= 0.01;
     filter.wet.value = value;
 }
-// ---------------------------------------------------// 
 
+// Knob 8
 const knob8 = document.getElementById("knob8");
 const param8 = document.getElementById("param_8");
 knob8.addEventListener("input", (event) => {
@@ -120,12 +114,8 @@ knob8.addEventListener("input", (event) => {
     filter.frequency.value = synthKnob8;
 })
 
-
-
 function updateKnob8(value) {
     knob8.value = value;
     filter.frequency.value = value;
     param8.value = value;
 }
-
-// ---------------------------------------------------// 

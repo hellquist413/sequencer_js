@@ -21,3 +21,22 @@ async function createShortIO(urlToShorten) {
     return shortIOresponse;
   })
 }
+
+async function getShortIOBulk() {
+var data = {
+  "domain_id":"5sc4.short.gy",
+  "limit": "10",
+  "offset": "0"
+  }; 
+fetch('https://api.short.io/api/links', {
+  method: 'post',
+  headers: {
+    'accept': 'application/json',
+    'authorization': 'pk_Fyb6rXgT61WeumwC'
+  },
+}).then(function(response){ 
+   return response.json();
+  }).then(function(response){
+  console.log(response)
+  })
+}
