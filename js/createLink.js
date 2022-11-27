@@ -25,9 +25,9 @@ async function createShortIO(urlToShorten) {
 
 
 async function getShortIOBulk() {
-await fetch('/.netlify/functions/shortIOlinks')
+await fetch('/api/shortIOlinks')
 .then(function(response){ 
-   return response;
+   return JSON.stringify(response);
   }).then(function(response){
   console.log(response)
   })

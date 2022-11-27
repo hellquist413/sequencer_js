@@ -2,7 +2,7 @@
 // /.netlify/functions/shortIOlink
 
 const fetch = require('node-fetch');
-const handler = async (event) => {
+const handler = async (event, context, callback) => {
 
   const url = 'https://api.short.io/api/links?domain_id=519801&limit=5&dateSortOrder=desc';
   const options = {
@@ -13,11 +13,12 @@ const handler = async (event) => {
     }
   };
 
-  fetch(url, options)
-    .then(function (response) {
-      return response.json();
-    }).then(function (response) {
-      console.log(response)
+  res = await fetch(url, options);
+  data = await res.json();
+
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify(data)
     })
 }
 

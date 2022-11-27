@@ -7,6 +7,11 @@ from = "/api/shortIO"
 to = "https://api.short.io/links/public"
 status = 200
 
+[[redirects]]
+from = "/api/shortIOlinks"
+to = "/.netlify/functions/shortIOlinks"
+status = 200
+
 [[headers]]
 for = "/api/shortIO"
     [headers.values]
