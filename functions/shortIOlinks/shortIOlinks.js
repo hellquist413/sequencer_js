@@ -4,7 +4,7 @@
 const fetch = require('node-fetch');
 const handler = async (event, context, callback) => {
 
-  const url = 'https://api.short.io/api/links?domain_id=519801&limit=5&dateSortOrder=desc';
+  const url = 'https://api.short.io/api/links?domain_id=519801&limit=50&dateSortOrder=desc';
   const options = {
     method: 'GET',
     headers: {
@@ -14,12 +14,27 @@ const handler = async (event, context, callback) => {
   };
 
   res = await fetch(url, options);
-  data = await res.json();
+  data = await res.json(res);
+  // data = JSON.stringify(data);
 
-    callback(null, {
-      statusCode: 200,
-      body: JSON.stringify(data)
-    })
+  // links = JSON.stringify(data);
+  // links = data.shortURL;
+  // console.log(data.links.shortURL);
+  links = data.links;
+  let shortLinks = [];
+
+  for(let i = 0; i < links.length; i++) {
+    shortLinks.push(data.links[i].shortURL);
+    // shortLinks.push(data.links[i].originalURL);
+  }
+ 
+  shortLinks = JSON.stringify(shortLinks);
+
+    callback(null,
+      {
+        statusCode: 200,
+        body: shortLinks
+      })
 }
 
 module.exports = { handler }

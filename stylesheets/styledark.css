@@ -346,13 +346,42 @@ body {
   margin-top: 10px;
   font-size: 1rem;
   border: 0px solid black;
-  overflow:visible;
+  overflow: visible;
   max-height: 50%;
   height: 50%;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+#presetIOlist {
+  overflow:scroll;
+  min-width: 250px;
+  height: calc(100% - 30px);
+  color: var(--textColor);
+  margin-bottom: 10px;
+  margin-top: -10px;
+  border: 0px solid black;
+  overflow: scroll;
+  padding: 1px;
+  font-size: 0.6rem;
+}
+
+#presetlistSidebarScroll, h2, a {
+  background-color: var(--bgdiv1);
+  border-bottom: 1px solid var(--btnborder);
+  color: var(--textColor);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#presetlistSidebarScroll, h2:hover {
+  background-color: var(--activeStep);
+  border-bottom: 1px solid var(--btnborder);
+  color: var(--textColor);
 
 }
+
+
 #optionsSidebar {
   color: var(--textColor);
   min-width: 250px;

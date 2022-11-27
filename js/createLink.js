@@ -4,8 +4,8 @@ async function createShortIO(urlToShorten) {
     "originalURL": urlToShorten
   };
   await fetch('/api/shortIO', {
- // await fetch('https://api.short.io/links/public', {
-      method: 'post',
+    // await fetch('https://api.short.io/links/public', {
+    method: 'post',
     headers: {
       'accept': 'application/json',
       'Content-Type': 'application/json',
@@ -22,13 +22,19 @@ async function createShortIO(urlToShorten) {
   })
 }
 
+function getShortIOBulk() {
+  fetch('/api/shortIOlinks')
+    .then(function (response) {
+      return response.json();
+    }).then(function (data) {
 
+      sidebarBox = document.getElementById('presetIOlist');
+      selectLinks = data;
+      sidebarBox.innerHTML = "";
 
-async function getShortIOBulk() {
-await fetch('/api/shortIOlinks')
-.then(function(response){ 
-   return JSON.stringify(response);
-  }).then(function(response){
-  console.log(response)
-  })
+      for (let i = 0; i < selectLinks.length; i++) {
+          sidebarBox.innerHTML += `<a href="` + selectLinks[i] + `"><h2>` + selectLinks[i] + `</h2></a>`;
+      }
+    })
+    .catch((err) => console.error);
 }
