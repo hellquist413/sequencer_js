@@ -416,12 +416,12 @@ function startLoop() {
       if (note === 1) {
 
         if (index == 8) {
-          synth3.triggerAttackRelease(Tone.Midi(notes[index]), '16n', time + 0.1);
+          synth3.triggerAttackRelease(Tone.Midi(notes[index]), '16n', time + 0.5);
           // synth.triggerAttackRelease(notes[index], '16n', time + 0.1);
         } else if (index == 7) {
-          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.1);
+          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.5);
         } else {
-          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.1);
+          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.5);
         }
       }
 

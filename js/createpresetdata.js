@@ -46,9 +46,9 @@ function createUserPresetData() {
     return presetData;
 }
 
-function loadUserPresetData() {
+function loadUserPresetData(data) {
 
-    if (lastId == "" && !initialized) {
+    if (lastId == "" && !initialized || userPresetIsLoaded === true) {
 
         // Search URL
         const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -57,7 +57,13 @@ function loadUserPresetData() {
 
         // Get parameter d= from URL & decode to JS Object
         encodedData = params.d;
-        if (!encodedData) { return; }
+        if (!encodedData) { 
+            if (data !== undefined) {
+                encodedData = data;
+            } else {
+                return;
+            }
+        }
         notes = [];
         encodedData = decodeURIComponent(encodedData);
         decodedData = atob(encodedData);
@@ -137,7 +143,7 @@ function loadUserPresetData() {
         updateVolumeSlider(6, decodedData.vol7);
         updateVolumeSlider(7, decodedData.vol8);
         updateVolumeSlider(8, decodedData.vol9);
-        
+
         updatePitchKnobs(0, decodedData.notes[0]);
         updatePitchKnobs(1, decodedData.notes[1]);
         updatePitchKnobs(2, decodedData.notes[2]);

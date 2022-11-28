@@ -15,19 +15,18 @@ const handler = async (event, context, callback) => {
 
   res = await fetch(url, options);
   data = await res.json(res);
-  // data = JSON.stringify(data);
 
-  // links = JSON.stringify(data);
-  // links = data.shortURL;
-  // console.log(data.links.shortURL);
-  links = data.links;
+  let links = data.links;
   let shortLinks = [];
 
   for(let i = 0; i < links.length; i++) {
-    shortLinks.push(data.links[i].shortURL);
-    // shortLinks.push(data.links[i].originalURL);
+
+    let shortObject = {
+      "shortURL":data.links[i].shortURL,
+      "originalURL":data.links[i].originalURL
+    };
+    shortLinks.push(shortObject);
   }
- 
   shortLinks = JSON.stringify(shortLinks);
 
     callback(null,

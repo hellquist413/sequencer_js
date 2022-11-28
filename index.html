@@ -71,14 +71,15 @@
 <div id="sidebar" class="sidebarclassThin">
   <div id="sidebarborder" class="sidebarclassborder"><span>➘ options</span></div>
   <div id="sidebarcontent" class="sidebarcontent">
-    <div id="presetlistSidebar">
+    <div id="presetlistSidebar" class="presetlistSidebar">
       <h1>Recent presets</h1>
       <div id="presetIOlist"></div>
     </div>
-    <div id="optionsSidebar">
+    <div id="optionsSidebar" class="optionsSidebar">
       <h1>Util</h1>
+      <br />
       <button type="button" style="margin-left: 15px" class="button-38" id="downloadPreset"
-        onclick="downloadPreset()">Download preset!</button><br /><br />
+        onclick="downloadPreset()">Download preset to file</button><br /><br />
       <button class="button-38" style="margin-left: 15px" id="resetBtn" onclick="resetStepsArray()">Clear grid & instruments</button>
 
     </div>
@@ -285,6 +286,7 @@
 </div>
 
 <script>
+  let toggled = false;
   sidebarborder = document.getElementById("sidebarborder");
   sidebar = document.getElementById("sidebar");
   mydiv = document.getElementById("mydiv");
@@ -296,8 +298,10 @@
     sidebar.classList.toggle("sidebarclass");
     mydiv.classList.toggle("mydivThin");
     mydiv.classList.toggle("mydiv");
-
-    getShortIOBulk();
+    if(toggled === false) {
+      getShortIOBulk();
+      toggled = true;
+    }
   });
 </script>
 
