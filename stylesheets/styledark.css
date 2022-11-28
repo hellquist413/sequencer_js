@@ -153,8 +153,8 @@ body {
 .mydiv {
   background-color: var(--bgdiv1);
   background-repeat: repeat-x;
-  width: 100%;
-  margin-left: auto;
+  width: calc(100% - 30px);
+  margin-left: 0;
   margin-right: auto;
   padding: 20px;
   color: var(--textColor);
@@ -225,6 +225,8 @@ body {
   font-size: 1rem;
   animation-name: sidebarAnimation;
   animation-duration: 0.1s;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 @keyframes sidebarAnimation {
@@ -384,11 +386,15 @@ body {
   font-size: 0.8rem;
   margin-top: 5px;
   padding: 10px;
-  background-color: var(--forth);
+  background-color: var(--btnbg);
   border-bottom: 1px solid var(--btnborder);
   color: var(--textColor);
   cursor: pointer;
   overflow: hidden;
+}
+
+.presetlistSidebarItemPreviously {
+  background-color: var(--forth);
 }
 
 .presetlistSidebarItem:hover {
