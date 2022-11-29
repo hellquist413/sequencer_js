@@ -17,6 +17,7 @@ for = "/api/shortIO"
     [headers.values]
     accept = "application/json"
     Content-Type = "application/json"
+    authorization = "pk_V6vyxlPK9boqv6hg"
 
 [dev]
     functionsPort=3000
