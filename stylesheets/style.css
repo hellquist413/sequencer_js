@@ -153,7 +153,7 @@ body {
 .mydiv {
   background-color: var(--bgdiv1);
   background-repeat: repeat-x;
-  width: calc(100% - 30px);
+  min-width: calc(100% - 30px);
   margin-left: 0;
   margin-right: auto;
   padding: 20px;

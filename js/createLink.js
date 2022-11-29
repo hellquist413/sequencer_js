@@ -28,8 +28,8 @@ function getShortIOBulk() {
       return response.json();
     }).then(function (data) {
 
-      sidebarBox = document.getElementById('presetIOlist');
-      selectLinks = data; // object
+      const sidebarBox = document.getElementById('presetIOlist');
+      let selectLinks = data; // object
       sidebarBox.innerHTML = "";
 
       for (let i = 0; i < selectLinks.length; i++) {
@@ -42,7 +42,6 @@ function getShortIOBulk() {
         linkDiv.addEventListener('click', () => {
           dataFromLink = selectLinks[i].originalURL.split('?d=')[1];
           getAllLinks = document.querySelectorAll('.presetlistSidebarItem');
-          console.log(getAllLinks);
           getAllLinks.forEach(element => {
             if (element.classList.contains('cellActive')) {
               element.classList.remove('cellActive');
@@ -50,7 +49,7 @@ function getShortIOBulk() {
             }
           });
           linkDiv.classList.add('cellActive');
-          userPresetIsLoaded = true;
+          userPresetIsPressed = true;
           loadUserPresetData(dataFromLink);
         });
 

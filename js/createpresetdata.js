@@ -48,20 +48,24 @@ function createUserPresetData() {
 
 function loadUserPresetData(data) {
 
-    if (lastId == "" && !initialized || userPresetIsLoaded === true) {
+    if (lastId == "" && !initialized || userPresetIsPressed === true) {
 
-        // Search URL
-        const params = new Proxy(new URLSearchParams(window.location.search), {
-            get: (searchParams, prop) => searchParams.get(prop),
-        });
+        if (userPresetIsPressed !== true) {
+            // Search URL
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
 
-        // Get parameter d= from URL & decode to JS Object
-        encodedData = params.d;
-        if (!encodedData) { 
+            // Get parameter d= from URL & decode to JS Object
+            encodedData = params.d;
+            if (!encodedData) {
+                return;
+            }
+        } else {
             if (data !== undefined) {
                 encodedData = data;
             } else {
-                return;
+                return console.log("Something went wrong, No Data");
             }
         }
         notes = [];
@@ -144,15 +148,11 @@ function loadUserPresetData(data) {
         updateVolumeSlider(7, decodedData.vol8);
         updateVolumeSlider(8, decodedData.vol9);
 
-        updatePitchKnobs(0, decodedData.notes[0]);
-        updatePitchKnobs(1, decodedData.notes[1]);
-        updatePitchKnobs(2, decodedData.notes[2]);
-        updatePitchKnobs(3, decodedData.notes[3]);
-        updatePitchKnobs(4, decodedData.notes[4]);
-        updatePitchKnobs(5, decodedData.notes[5]);
-        updatePitchKnobs(6, decodedData.notes[6]);
-        updatePitchKnobs(7, decodedData.notes[7]);
-        updatePitchKnobs(8, decodedData.notes[8]);
+        for(let i = 0; i < rows; i++) {
+            updatePitchKnobs(i, decodedData.notes[i]);
+        }
+
+        userPresetIsPressed = false;
 
     } else {
         return false;

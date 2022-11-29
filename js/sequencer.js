@@ -4,6 +4,7 @@ let isPlaying = false;
 let initialized = false;
 let stepsData = [];
 let swingValueDef = 5;
+let swingValue = "";
 let swingSubDiv = '32n';
 let bpm = 133;
 let songsData = [];
@@ -22,6 +23,9 @@ let uPreDescription = "";
 let uPreKit;
 let sampleUrl = 'samples/';
 let userPresetIsLoaded = false;
+let userPresetIsPressed = false;
+let randomizerIsPressed = false;
+let randomKit;
 
 // let activateHeader = document.querySelector('.presetBox');
 let bpmInput = document.getElementById('bpmInput');
