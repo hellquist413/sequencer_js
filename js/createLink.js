@@ -9,7 +9,7 @@ async function createShortIO(urlToShorten) {
     headers: {
       'accept': 'application/json',
       'Content-Type': 'application/json',
-      'authorization': 'pk_Fyb6rXgT61WeumwC'
+      'authorization': process.env.SHORTIO_API_TOKEN_PUBLIC
     },
     body: JSON.stringify(data)
   }).then(function (response) {
