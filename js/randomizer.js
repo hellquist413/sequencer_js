@@ -2,6 +2,7 @@ function randomizer() {
     userPresetIsPressed = true;
     randomizerIsPressed = true;
 
+
     // Random INT value
     function randomInt(min, max) {
         return Math.round(Math.random() * (max - min + 1)) + min;
@@ -26,7 +27,7 @@ function randomizer() {
 
     // Random Subdivision
     const subdivisions = ["4n", "4n.", "4t", "8n", "8n.", "8t", "16n", "16n.", "16t", "32n", "32n.", "32t"];
-    let randomSubdivID = randomInt(0,11);
+    let randomSubdivID = randomInt(0,10);
     swingSubDiv = subdivisions[randomSubdivID];
 
     // Random steps array
@@ -100,5 +101,11 @@ function randomizer() {
     presetData = dataToEncode;
 
     loadUserPresetData(presetData);
+    startPlaying();
+
+    const playBtn = document.getElementById('playBtn');
+    playBtn.classList.add('green');
+    playBtn.innerHTML = `Stop`;
+
     randomizerIsPressed = false;
 }

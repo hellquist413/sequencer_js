@@ -34,6 +34,7 @@
   --coverBlockBg: rgba(0, 0, 0, 0.6);
   --paramBg: rgb(255, 255, 255);
   --paramBorder: rgb(190, 190, 190);
+  --recording: rgb(253, 0, 0);
 }
 
 * {
@@ -153,7 +154,7 @@ body {
 .mydiv {
   background-color: var(--bgdiv1);
   background-repeat: repeat-x;
-  min-width: calc(100% - 30px);
+  max-width: calc(100% - 30px);
   margin-left: 0;
   margin-right: auto;
   padding: 20px;
@@ -266,6 +267,7 @@ body {
   z-index: 100;
   opacity: 50%;
   padding: 3px;
+  padding-top: 30px;
   writing-mode: vertical-rl;
   text-orientation: sideways-right;
 }
@@ -347,6 +349,13 @@ body {
   font-size: 1.2rem;
   padding: 0px;
   margin: 0px;
+}
+
+.minimizeBtn {
+  position:absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 2000;
 }
 
 .presetlistSidebar {
@@ -484,6 +493,10 @@ body {
 
 .green {
   background-color: var(--btnGreen) !important;
+}
+
+.red {
+  background-color: var(--recording) !important;
 }
 
 .presetBox {

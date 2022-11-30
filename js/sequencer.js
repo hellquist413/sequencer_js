@@ -11,6 +11,7 @@ let songsData = [];
 let lastId = "";
 let currentKitName = "KrumQuist";
 let sampleNames = [];
+let isRecording = false;
 
 // ----------------------------------// 
 // User preset settings
@@ -25,7 +26,7 @@ let sampleUrl = 'samples/';
 let userPresetIsLoaded = false;
 let userPresetIsPressed = false;
 let randomizerIsPressed = false;
-let randomKit;
+let randomKit = "";
 
 // let activateHeader = document.querySelector('.presetBox');
 let bpmInput = document.getElementById('bpmInput');
@@ -102,7 +103,7 @@ let synths = [];
 let notes = [
   "36", "36", "36",
   "36", "36", "36",
-  "57", "36", "36" ];
+  "57", "36", "36"];
 
 // ----------------------------------------------// 
 // ----------------------------------------------// 
@@ -153,8 +154,8 @@ function resetStepsArray() {
   vol9 = 0;
 
   notes = ["36", "36", "36",
-  "36", "36", "36",
-  "57", "36", "36" ];
+    "36", "36", "36",
+    "57", "36", "36"];
 
   userPresetIsLoaded = false;
 
@@ -166,8 +167,6 @@ function resetStepsArray() {
   createTable(rows, steps);
 }
 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 // ----------------------------------------------// 
 
 function createTable(rows, steps) {
@@ -212,9 +211,7 @@ function createTable(rows, steps) {
     seq.querySelector('#tableHead').appendChild(timeHeader);
   }
 
-
   // Create table rows [instruments]
-
 
   for (let i = 0; i < rows; i++) {
 
@@ -236,20 +233,10 @@ function createTable(rows, steps) {
     newSampleName.setAttribute('id', 'SN_' + i);
 
     let newKnob = document.createElement('webaudio-knob');
-/*     newKnob.classList.add('pitchknob');
-    newKnob.setAttribute('id', 'pitchKnob_' + i);
-    newKnob.setAttribute('src', 'images/fx-2.png');
-    newKnob.setAttribute('tooltip', '%s');
-    newKnob.setAttribute('min', '0');
-    newKnob.setAttribute('max', '127');
-    newKnob.setAttribute('diameter', '32');
-    newKnob.setAttribute('value', notes[i]); */
 
-
-    // Check if 9th channel in the mixer is Synth
     if (i === 8) { sampleN = "Monosynth"; } else { sampleN = sampleNames[i]; }
     newTableSpace.innerHTML = `
-    <webaudio-knob id="pitchKnob_` + i + `" src="images/fx-2.png" tooltip="%s" min="0" max="127" diameter="32" value="`+ notes[i] + `" oninput="pitchChange(` + instrumentId + `)" class="pitchKnob">
+    <webaudio-knob id="pitchKnob_` + i + `" src="images/fx-2.png" tooltip="%s" min="0" max="127" diameter="32" value="` + notes[i] + `" oninput="pitchChange(` + instrumentId + `)" class="pitchKnob">
     </webaudio-knob>
       <input type="range" min="-50" max="10" value="0" class="slider button-slider" id="volSlider_` + instrumentId + `" oninput="volumeChange(` + instrumentId + `)">
       <img src="img/inst/mix.svg" height="15px" id="inst" onclick="triggerMix('` + instrumentId + `')" class="mixElementFilter">
@@ -313,7 +300,6 @@ function plusBar() {
 
 // ----------------------------------------------// 
 
-
 function activateSteps() {
   this.classList.toggle('cellActive');
 
@@ -336,8 +322,6 @@ function activateSteps() {
 }
 
 // ----------------------------------------------// 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 // Swing stuff 
 
 swingValue = swingValue = document.getElementById("swingSlider").value;
@@ -354,8 +338,6 @@ function changeSwing() {
   Tone.Transport.swing = swing;
 }
 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 // ----------------------------------------------// 
 
 function swingSub(value) {
@@ -378,8 +360,6 @@ function swingSub(value) {
 }
 
 // ----------------------------------------------// 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 
 function activeKit(value) {
   const grabCurrentKitDOM = document.getElementById('displayKit');
@@ -398,34 +378,27 @@ function activeKit(value) {
 }
 
 // ----------------------------------------------// 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 
 function startLoop() {
 
   let beat = 0;
-  // Save synth preset if user change kit
-  // updateKnobVol(knobVol.value);
-
   for (let i = 0; i < 8; i++) {
     updateSampleNames(i);
   }
 
-  const repeat = (time) => {
-
+  var repeat = new Tone.Loop(function (time) {
     stepsData.forEach((arrayRows, index) => {
-
       let synth = synths[index];
       let note = arrayRows[beat];
       if (note === 1) {
 
         if (index == 8) {
-          synth3.triggerAttackRelease(Tone.Midi(notes[index]), '16n', time + 0.5);
+          synth3.triggerAttackRelease(Tone.Midi(notes[index]), '16n', time + 0.1);
           // synth.triggerAttackRelease(notes[index], '16n', time + 0.1);
         } else if (index == 7) {
-          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.5);
+          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.1);
         } else {
-          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.5);
+          synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0.1);
         }
       }
 
@@ -443,21 +416,100 @@ function startLoop() {
         } else {
           paintActive(index, beat, false);
         }
-
-      }, time)
+      }, time);
 
     });
-
     beat = (beat + 1) % steps;
-
-  };
-
-  Tone.Transport.scheduleRepeat(repeat, '16n', + 0.5);
-  startNow();
+  }, "16n");
+  return repeat;
 }
 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
+function recordNow() {
+
+  let beat = 0;
+  for (let i = 0; i < 8; i++) {
+    updateSampleNames(i);
+  }
+
+  // Recorder
+  const audio = document.getElementById('recorder');
+  const actx = Tone.context;
+  const dest = actx.createMediaStreamDestination();
+  const recorder = new MediaRecorder(dest.stream);
+  const recordData = [];
+  const playBtn = document.getElementById('playBtn');
+  playBtn.classList.add('red');
+  playBtn.innerHTML = `Rec`;
+
+  vol.connect(dest);
+
+  // Start recording
+  recorder.start();
+
+  var recordSeq = new Tone.Loop(function (time) {
+
+    // Play if current beat is less than sequencer total steps
+    if (beat < (steps - 1)) {
+      isPlaying = true;
+      stepsData.forEach((arrayRows, index) => {
+
+        let synth = synths[index];
+        let note = arrayRows[beat];
+        if (note === 1) {
+
+          if (index == 8) {
+            synth3.triggerAttackRelease(Tone.Midi(notes[index]), '16n', time + 0);
+            // synth.triggerAttackRelease(notes[index], '16n', time + 0.1);
+          } else if (index == 7) {
+            synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0);
+          } else {
+            synth.triggerAttackRelease(Tone.Midi(notes[index]), '1n', time + 0);
+          }
+        }
+
+        Tone.Draw.schedule(function () {
+          let getDrawCell = document.querySelector('#row_' + index + '_' + beat);
+
+          if (!getDrawCell) return
+          const getId = getDrawCell.id.split("_")
+          const rowId = getId[1];
+          const stepId = getId[2];
+
+          if (getDrawCell.classList.contains('cellActive')) {
+            paintActive(index, beat, true);
+
+          } else {
+            paintActive(index, beat, false);
+          }
+        }, time);
+
+      });
+
+      // Stop recording
+    } else {
+      recordSeq.stop();
+      isRecording = false;
+      isPlaying = false;
+      beat = 0;
+      setTimeout(function () {
+        recorder.stop();
+        playBtn.classList.remove('red');
+        playBtn.innerHTML = `Play`;
+      }, 1000);
+
+      recorder.ondataavailable = evt => recordData.push(evt.data);
+      recorder.onstop = evt => {
+        let blob = new Blob(recordData, { type: 'audio/ogg; codecs=opus' });
+        audio.src = URL.createObjectURL(blob);
+      }
+    }
+
+    beat = (beat + 1) % steps;
+  }, "16n");
+
+  return recordSeq;
+}
+
 // ----------------------------------------------// 
 
 function startNow() {
@@ -466,8 +518,31 @@ function startNow() {
   Tone.Transport.start();
 }
 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
+// ----------------------------------// 
+// Manage play/pause state
+
+function initialize() {
+  Tone.start();
+  repeat = startLoop();
+  startNow();
+  initialized = true;
+  copyButton.innerHTML = `Generate preset link & copy!`;
+}
+
+function stopPlaying() {
+  repeat.stop();
+  Tone.Transport.stop();
+  isPlaying = false;
+}
+
+function startPlaying() {
+  Tone.Transport.start();
+  setTimeout(function () {
+    repeat.start();
+  }, 100);
+  isPlaying = true;
+}
+
 // ----------------------------------------------// 
 // Paint DIV colors when playing
 
@@ -484,8 +559,6 @@ function paintActive(index, beat, active) {
 }
 
 // ----------------------------------------------// 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 // Play from instrument rows
 
 function triggerMix(index) {
@@ -498,33 +571,6 @@ function triggerMix(index) {
   }
 }
 
-// ----------------------------------// 
-// Manage play/pause state
-
-function initialize() {
-  Tone.start();
-  startLoop();
-  initialized = true;
-  copyButton.innerHTML = `Generate preset link & copy!`;
-}
-
-// ----------------------------------// 
-
-function stopPlaying() {
-  Tone.Transport.stop();
-  Tone.Draw.cancel();
-  isPlaying = false;
-}
-
-// ----------------------------------// 
-
-function startPlaying() {
-  startNow();
-  isPlaying = true;
-}
-
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 // ----------------------------------------------// 
 // Play button
 
@@ -547,9 +593,6 @@ function handlePlay() {
   });
 }
 
-
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 // ----------------------------------------------// 
 // Play with spacebar
 
@@ -574,8 +617,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
 // ----------------------------------------------// 
 // Inputs for BPM value
 
@@ -620,13 +661,14 @@ bpmInput.addEventListener("change", function () {
 });
 
 // ----------------------------------// 
-// Longpress
+// Longpress bpm
 
 let timer;
 let wait;
 const tempo = 60;
 
 function mouseDown(id) {
+
   if (bpm <= 20 || bpm >= 300) { return }
   wait = setTimeout(function () {
     timer = setInterval(function () {
@@ -647,187 +689,6 @@ const mouseUp = () => {
   clearInterval(timer);
 };
 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
-// JSON LOAD PRESET LIST USED WITH DB
-
-function loadPresetList() {
-
-  let requestTrack = new Request('/sequencer/get-presets');
-
-  fetch(requestTrack)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (songsData) {
-
-      // Create Rows
-      let i = 1;
-      songsData.forEach(songsData => {
-        // let pId = songsData.id;
-        let pAuthor = songsData.author;
-        let pDescription = songsData.description;
-        let pRating = songsData.rating;
-
-        let presetContainer = document.getElementById('up');
-        let presetRow = document.createElement('div');
-        presetRow.classList.add('user-presets-content');
-        presetRow.setAttribute('id', 'pId_' + songsData._id);
-
-        if (i % 2 === 0) { presetRow.classList.add('lightgray'); }
-        i++;
-
-        // Create cells
-        let presetCell = document.createElement('div');
-        let presetCell2 = document.createElement('div');
-        let presetCell3 = document.createElement('div');
-        presetCell.classList.add('user-presets-content-cell', 'pCell1');
-        presetCell2.classList.add('user-presets-content-cell', 'pCell2');
-        presetCell3.classList.add('user-presets-content-cell', 'pCell3');
-
-        let htmlAuthor = pAuthor.substring(0, 9);
-        let htmlDescription = pDescription.substring(0, 40);
-        let endline = "";
-        let endline1 = "";
-        if (pDescription.length > 40) { endline = ".." }
-        if (pAuthor.length > 9) { endline1 = ".." }
-
-        presetCell.innerHTML = pRating;
-        presetCell2.innerHTML = htmlAuthor + endline1;
-        presetCell3.innerHTML = htmlDescription + endline;
-        presetRow.appendChild(presetCell);
-        presetRow.appendChild(presetCell2);
-        presetRow.appendChild(presetCell3);
-        presetContainer.appendChild(presetRow);
-
-        presetRow.addEventListener('click', listenToSong);
-
-        lastId = songsData._id;
-      });
-    }).then(function () {
-
-      const presetRows = document.querySelectorAll('.user-presets-content');
-      for (let i = 0; i < presetRows.length; i++) {
-        presetRows[i].addEventListener('click', listenToSong);
-      }
-      return songsData;
-    });
-}
-
-// ----------------------------------------------// 
-// ----------------------------------------------// 
-// ----------------------------------------------// 
-// LISTEN TO PRESET SONG USED WITH DB loadPreset from data
-
-function listenToSong() {
-
-  let id;
-  let rowDiv;
-  let getId
-  let idN
-  let requestTrackId
-
-  if (lastId == "" && !initialized) {
-    requestTrackId = new Request('/sequencer/id/' + getUserPresetFromUrl);
-    id = 'pId_' + getUserPresetFromUrl;
-    idN = getUserPresetFromUrl;
-    rowDiv = document.getElementById(id);
-  } else {
-    id = this.id;
-    getId = this.id.split("_");
-    idN = getId[1];
-    requestTrackId = new Request('/sequencer/id/' + idN);
-  }
-
-  fetch(requestTrackId)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (songsData) {
-
-      window.history.replaceState("", "", '/sequencer/?id=' + idN);
-      lastId = idN;
-      if (uPreId != "" && uPreId !== idN) {
-        rowDiv = document.getElementById('pId_' + uPreId);
-        rowDiv.classList.remove('cellActive');
-      }
-
-      // NEW VALUES
-
-      uPreLoaded = true;
-      uPreId = songsData._id;
-      uPreRating = songsData.rating;
-      uPreAuthor = songsData.author;
-      uPreDescription = songsData.description;
-      uPreKit = songsData.kit;
-      stepsData = songsData.songdata;
-      rows = 9;
-      steps = songsData.steps;
-      rowDivId = idN;
-      bpm = parseInt(songsData.bpm);
-      previousKit = uPreKit;
-
-
-      Tone.Draw.cancel();
-      swingSub(swingSubDiv);
-      createTable(rows, steps);
-      selectKit(uPreKit);
-
-      swingValueDef = songsData.swing;
-      swingSubDiv = songsData.swingsub;
-
-      bpmInput.value = bpm;
-      let swingValue = document.getElementById("swingSlider").value = swingValueDef;
-
-      const setPresetBoxAuthor = document.getElementById('pAuthor');
-      setPresetBoxAuthor.innerHTML = uPreAuthor;
-
-      const setPresetBoxDescr = document.getElementById('pDescription');
-      setPresetBoxDescr.innerHTML = uPreDescription;
-
-      const getAllKitsList = document.querySelectorAll('.kitc');
-
-      for (let j = 0; j < getAllKitsList.length; j++) {
-        getAllKitsList[j].classList.remove('green');
-      }
-
-      newActiveKit = document.getElementById('kit' + uPreKit);
-      newActiveKit.classList.add('green');
-
-      let getKitName = kitNames(uPreKit)
-      setPresetKit = document.getElementById('displayKit');
-      setPresetKit.innerHTML = 'Kit: ' + getKitName;
-
-      activateHeader.classList.add("presetBox-active");
-
-      // updateKnobVol(songsData.volume);
-      updateKnob1(songsData.semitone);
-      updateKnob2(songsData.filtercutoff);
-      updateKnob3(songsData.filterenvelope);
-      updateKnob4(songsData.sustain);
-      updateKnob5(songsData.pingpong);
-      updateKnob6(songsData.reverb);
-      updateKnob7(songsData.lfoamount);
-      updateKnob8(songsData.lfofreq);
-
-      updateVolumeSlider(0, vol1);
-      updateVolumeSlider(1, vol2);
-      updateVolumeSlider(2, vol3);
-      updateVolumeSlider(3, vol4);
-      updateVolumeSlider(4, vol5);
-      updateVolumeSlider(5, vol6);
-      updateVolumeSlider(6, vol7);
-      updateVolumeSlider(7, vol8);
-      updateVolumeSlider(8, vol9);
-      
-    });
-
-  rowDiv = document.getElementById(id);
-  if (rowDiv) { rowDiv.classList.add('cellActive'); }
-  addgreenPlay();
-}
-
 function addgreenPlay() {
   const button = document.getElementById('playBtn');
   if (initialized && !isPlaying) {
@@ -841,89 +702,10 @@ function sanitizeString(str) {
   return str.trim();
 }
 
-const submitForm = document.getElementById('submitForm');
-submitForm.addEventListener('submit', (event) => {
-
-  event.preventDefault();
-  const formAuthor = document.getElementById('formAuthor').value;
-  const formDescription = document.getElementById('formDescription').value;
-
-  // Check all inputs and so track is not empty
-  if (formAuthor !== "" && formDescription !== "") {
-
-    submitData(sanitizeString(formAuthor), sanitizeString(formDescription));
-
-  } else if (!formAuthor) {
-    console.log('author missing');
-    return false
-  } else if (!formDescription) {
-    console.log('description missing');
-    return false
-  }
-
-});
-
-async function submitData(formAuthor, formDescription) {
-
-  const url = "/sequencer/publish";
-  let newRating = 0;
-  lastId = 0;
-  let id = lastId + 1;
-  let kit = uPreKit;
-
-  const data = {
-    id, formAuthor, formDescription, newRating, kit, bpm, steps,
-    swingValueDef, swingSubDiv, stepsData,
-    synthKnobVol, synthKnob1, synthKnob2, synthKnob3, synthKnob4, synthKnob5, synthKnob6, synthKnob7, synthKnob8
-  }
-
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  };
-
-  const res = await fetch(url, options);
-  const json = await res.json();
-  window.location.assign('/sequencer/?id=' + json['_id']);
-
-  let presetContainer = document.getElementById('up');
-  presetContainer.innerHTML = '';
-  loadPresetList();
-
-  return json;
-}
-
-function requireValue(input, message) {
-  return input.value.trim() === '' ?
-    error(input, message) :
-    success(input);
-}
-
-// ----------------------------------------------//  
-
-async function vote(vote) {
-  const voteData = { uPreId, vote };
-  const options = {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(voteData)
-  };
-  const res = await fetch('/sequencer/vote', options);
-  const json = await res.json();
-}
-
-
 // ----------------------------------------------// 
-// Handle copy preset link
+// Create short URL
 
 const copyButton = document.getElementById("urlCopyButton");
-// const copyUrlText = document.getElementById("urlTextbox");
-
 copyButton.addEventListener('click', function () {
   let generatedData = createUserPresetData();
   if (!generatedData) {
@@ -942,10 +724,7 @@ copyButton.addEventListener('click', function () {
 });
 
 
-// ----------------------------------------------// 
-
 window.addEventListener('load', function () {
-
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
@@ -957,10 +736,5 @@ window.addEventListener('load', function () {
   handlePlay();
   loadUserPresetData();
   activeKit(uPreKit);
+  getShortIOBulk();
 });
-
-/* if(lastId == "" && !initialized) {
-  listenToSong();
-} */
-
-// ----------------------------------------------// 

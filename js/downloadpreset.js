@@ -7,6 +7,4 @@ function downloadPreset() {
 
     document.body.appendChild(presetFile);
     presetFile.click();
-
-    console.log("Download file");
 }

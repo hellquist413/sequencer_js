@@ -68,8 +68,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300&display=swap" rel="stylesheet">
 <link id="theme" rel="stylesheet" href="/stylesheets/style.css">
 
-<div id="sidebar" class="sidebarclassThin">
-  <div id="sidebarborder" class="sidebarclassborder"><span>➘ options</span></div>
+<div id="sidebar" class="sidebarclass">
+  <div id="sidebarborder" class="sidebarclassborderActive"><span>➘ options</span><div class="minimizeBtn"><img src="img/gear.png" height="20" width="20"></div></div>
   <div id="sidebarcontent" class="sidebarcontent">
     <div id="presetlistSidebar" class="presetlistSidebar">
       <h1>Recent presets</h1>
@@ -78,15 +78,17 @@
     <div id="optionsSidebar" class="optionsSidebar">
       <h1>Util</h1>
       <br />
+      <button class="button-38" style="margin-left: 15px" id="recordBtn" onclick="record()">Record sequence & save</button><br />
+      <audio controls style="width: 230px;border-radius: 2px;margin: 15px;" id="recorder"></audio><br />
       <button type="button" style="margin-left: 15px" class="button-38" id="downloadPreset"
         onclick="downloadPreset()">Download preset to file</button><br /><br />
-      <button class="button-38" style="margin-left: 15px" id="resetBtn" onclick="resetStepsArray()">Clear grid & instruments</button>
+        <button class="button-38" style="margin-left: 15px" id="resetBtn" onclick="resetStepsArray()">Clear grid & instruments</button><br /><br />
 
     </div>
   </div>
 </div>
 
-<div class="mydiv" id="mydiv">
+<div class="mydivThin" id="mydiv">
   <div id="publishScreen">
     <div class="publishContent">
       <form action="sequencer/publish" method="POST" id="submitForm">
@@ -289,7 +291,6 @@
 </div>
 
 <script>
-  let toggled = false;
   sidebarborder = document.getElementById("sidebarborder");
   sidebar = document.getElementById("sidebar");
   mydiv = document.getElementById("mydiv");
@@ -301,10 +302,7 @@
     sidebar.classList.toggle("sidebarclass");
     mydiv.classList.toggle("mydivThin");
     mydiv.classList.toggle("mydiv");
-    if(toggled === false) {
-      getShortIOBulk();
-      toggled = true;
-    }
+
   });
 </script>
 
@@ -320,4 +318,5 @@
 <script src="js/pitchchange.js"></script>
 <script src="js/downloadpreset.js"></script>
 <script src="js/randomizer.js"></script>
+<script src="js/record.js"></script>
 <script src="js/sequencer.js"></script>

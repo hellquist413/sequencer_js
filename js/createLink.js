@@ -50,7 +50,11 @@ function getShortIOBulk() {
           });
           linkDiv.classList.add('cellActive');
           userPresetIsPressed = true;
+          if(!initialized) { initialize(); }
           loadUserPresetData(dataFromLink);
+          const playBtn = document.getElementById('playBtn');
+          playBtn.classList.add('green');
+          playBtn.innerHTML = `Stop`;
         });
 
         copyDiv.addEventListener('click', () => {

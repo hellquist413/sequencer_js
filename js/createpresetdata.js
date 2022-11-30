@@ -153,6 +153,7 @@ function loadUserPresetData(data) {
         }
 
         userPresetIsPressed = false;
+        startPlaying();
 
     } else {
         return false;
