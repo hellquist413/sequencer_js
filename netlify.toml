@@ -1,6 +1,7 @@
 [build]
-    function = "functions/"
-    publish = ""
+function = "functions/"
+publish = ""
+command = "sed -i \"s|SHORTIO_API_TOKEN_PUBLIC|${SHORTIO_API_TOKEN_PUBLIC}|g\" netlify.toml && yarn build"
 
 [[redirects]]
 from = "/api/shortIO"
@@ -14,10 +15,10 @@ status = 200
 
 [[headers]]
 for = "/api/shortIO"
-    [headers.values]
-    accept = "application/json"
-    Content-Type = "application/json"
-    authorization = "pk_V6vyxlPK9boqv6hg"
+[headers.values]
+accept = "application/json"
+Content-Type = "application/json"
+authorization = "SHORTIO_API_TOKEN_PUBLIC"
 
 [dev]
-    functionsPort=3000
+functionsPort = 3000
